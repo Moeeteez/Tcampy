@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
+
 @Service
 @Slf4j
 @AllArgsConstructor
@@ -50,5 +52,11 @@ ProductCategoryRepository productCategoryRepository ;
     ProductCategory productCategory =productCategoryRepository.findById(idProduct).orElse(null);
    productCategory.getProducts().add(product) ;
 
+    }
+
+    @Override
+    public Set<Product> retrieveProductsByCategory(Long id) {
+        ProductCategory product=productCategoryRepository.findById(id).orElse(null);
+        return product.getProducts();
     }
 }

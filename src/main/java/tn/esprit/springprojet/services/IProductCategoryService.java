@@ -9,15 +9,13 @@ public interface IProductCategoryService {
 
     List<ProductCategory> retriveAllProductCategory();
 
-    ProductCategory addProductCategory(ProductCategory D);
+    ProductCategory AddProductCategory(ProductCategory productCategory);
 
     void deleteProductCategory(long id);
 
-    ProductCategory  updateProductCategory (ProductCategory D);
+    ProductCategory  updateProductCategory(ProductCategory productCategory);
 
     ProductCategory retrieveProductCategory(long id);
 
-    void assignCategoryToProduct(long idProduct, long ProductCategory);
 
-    Set<ProductCategory> retrieveProductCategoryByProduct(long idProduct);
 }

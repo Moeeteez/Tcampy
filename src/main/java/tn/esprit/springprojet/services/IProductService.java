@@ -3,6 +3,7 @@ package tn.esprit.springprojet.services;
 import tn.esprit.springprojet.entities.Product;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IProductService {
     List<Product> retriveAllProduct();
@@ -12,5 +13,7 @@ public interface IProductService {
 
     Product retrieveProduct(Long id);
     void assigneProductToCategory(String sku, long  id);
+
+    Set<Product> retrieveProductsByCategory(Long id);
 }
 

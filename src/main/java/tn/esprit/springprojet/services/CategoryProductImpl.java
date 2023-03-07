@@ -1,5 +1,8 @@
 package tn.esprit.springprojet.services;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import tn.esprit.springprojet.entities.ProductCategory;
 import tn.esprit.springprojet.repositories.ProductCategoryRepository;
 import tn.esprit.springprojet.repositories.ProductRepository;
@@ -7,29 +10,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Set;
-
+@Service
+@Slf4j
+@AllArgsConstructor
 public class CategoryProductImpl  implements IProductCategoryService {
     @Autowired
-    ProductCategoryRepository productCategoryRepository ;
+    ProductCategoryRepository productCategoryRepository;
     @Autowired
-    ProductRepository productRepository ;
+    ProductRepository productRepository;
 
     @Override
     public List<ProductCategory> retriveAllProductCategory() {
-        return productCategoryRepository.findAll() ;}
+        return productCategoryRepository.findAll();
+    }
 
     @Override
-    public ProductCategory addProductCategory(ProductCategory D) {
-        return productCategoryRepository.save(D);
+    public ProductCategory AddProductCategory(ProductCategory productCategory) {
+        return productCategoryRepository.save(productCategory);
     }
 
     @Override
     public void deleteProductCategory(long id) {
-    productCategoryRepository.deleteById(id);}
+        productCategoryRepository.deleteById(id);
+    }
 
     @Override
-    public ProductCategory updateProductCategory(ProductCategory D) {
-        return productCategoryRepository.save(D);
+    public ProductCategory updateProductCategory(ProductCategory productCategory) {
+        return productCategoryRepository.save(productCategory);
     }
 
     @Override
@@ -37,13 +44,5 @@ public class CategoryProductImpl  implements IProductCategoryService {
         return productCategoryRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public void assignCategoryToProduct(long idProduct, long ProductCategory) {
 
-    }
-
-    @Override
-    public Set<ProductCategory> retrieveProductCategoryByProduct(long idProduct) {
-        return null;
-    }
 }
