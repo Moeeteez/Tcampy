@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,13 +20,18 @@ public class CommandLine implements Serializable {
     @Column(name ="idCommandLine")
     @EmbeddedId
     private  CommandLineKey  id ;
+    private  int idCmdLine ;
     private  int quantityProds ;
-    @ManyToOne
-    @MapsId("idProduct")
-    @JoinColumn(name = "idProduct",referencedColumnName = "idProduct",insertable = false,updatable = false)
-    private  Product product;
-    @ManyToOne
-    @MapsId("idOrder")
-    @JoinColumn(name = "idOrder",referencedColumnName = "idOrder",insertable = false,updatable = false)
-    private  Order  order;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "commandLine")
+    private Set<Product> products ;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "commandLine")
+    private Set<Sales> sales ;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "commandLine")
+    private Set<Rental> rentals ;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "commandLine")
+    private Set<Order> orders ;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "LoyaltyPoints")
+    private LoyaltyPoints LoyaltyPoints ;
 }

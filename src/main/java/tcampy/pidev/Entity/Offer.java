@@ -1,4 +1,5 @@
 package tcampy.pidev.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,5 +23,8 @@ import java.io.Serializable;
     @JoinColumn(name = "idProduct")
     private Product product;
 
+    @OneToOne(mappedBy="offer")
+    @ToString.Exclude
+    private Product Product ;
 
 }

@@ -1,4 +1,5 @@
 package tcampy.pidev.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,9 +12,9 @@ import java.io.Serializable;
 public class Product implements  Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="idProduct")
+    @Column(name = "idProduct")
     private long idProduct;
-    private String sku ;
+    private String sku;
     private String name;
     private String description;
     private double priceRental;
@@ -23,4 +24,16 @@ public class Product implements  Serializable {
     private int quantity;
     @ManyToOne
     private CategoryProduct category;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private Offer offer  ;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private Promotion Promotion;
+
+    @ManyToOne
+    private CommandLine commandLine;
+
 }

@@ -23,8 +23,7 @@ public class Order implements Serializable {
     private String status ;
     private LocalDate dateCreated ;
     private LocalDate lastUpdated ;
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "order")
-    private List<CommandLine> commandLines ;
-
+    
+    @ManyToOne
+    private CommandLine commandLine;
 }

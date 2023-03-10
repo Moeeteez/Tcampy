@@ -27,15 +27,7 @@ public class Sales implements Serializable {
     @Column(nullable = false)
     private LocalDateTime saleDate;
 
-//    @ManyToOne
-//    @JoinColumn(name = "idProduct", nullable = false)
-//    private Product product;
-//
-////    @ManyToOne(fetch = FetchType.LAZY)
-////    @JoinColumn(name = "client_id")
-////    private Client client;
-//
-//    @OneToMany(mappedBy = "sales", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Payment> payments ;
+    @ManyToOne
+    private CommandLine commandLine;
 
 }

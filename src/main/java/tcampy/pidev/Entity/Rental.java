@@ -28,11 +28,7 @@ import java.util.List;
     @Column(nullable = false)
     private LocalDateTime returnDate;
 
-
-//    @OneToMany(mappedBy = "rental", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Payment> payments ;
-//@ManyToOne
-//@JoinColumn(name = "iProduct", nullable = false)
-//private Product product;
+@ManyToOne
+private CommandLine commandLine ;
 }
 

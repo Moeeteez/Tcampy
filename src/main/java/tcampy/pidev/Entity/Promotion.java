@@ -1,6 +1,5 @@
 package tcampy.pidev.Entity;
-
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import tcampy.pidev.Entity.PromotionType;
 
@@ -9,7 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -32,10 +30,9 @@ import java.util.List;
     private LocalDate EndDate ;
     @Enumerated(EnumType.STRING)
     private PromotionType promotionType;
+    @OneToOne(mappedBy = "Promotion")
+    @JsonIgnore
+    private Product Product ;
 
-//    @OneToMany(mappedBy = "promotion", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Product> products = new ArrayList<>();
-//    @Column(nullable = false)
-//    private int percentageDiscount;
 
 }

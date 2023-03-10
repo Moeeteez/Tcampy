@@ -5,6 +5,8 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.*;
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -27,5 +29,8 @@ public class User {
         this.username = username;
         this.password = password;
     }
-
+    @OneToOne
+    private LoyaltyPoints loyaltyPoints;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Order> orders ;
 }
