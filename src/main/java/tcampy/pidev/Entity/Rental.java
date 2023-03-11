@@ -1,5 +1,6 @@
 package tcampy.pidev.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,8 +28,8 @@ import java.util.List;
     private LocalDateTime rentalDate;
     @Column(nullable = false)
     private LocalDateTime returnDate;
-
-@ManyToOne
-private CommandLine commandLine ;
+    @JsonIgnore
+    @ManyToOne
+    private CommandLine commandLine ;
 }
 

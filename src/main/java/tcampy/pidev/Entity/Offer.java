@@ -19,10 +19,11 @@ import java.io.Serializable;
         @Column(name = "minimum_quantity")
         private Integer minimumQuantity;
         private long freeProduct ;
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idProduct")
     private Product product;
-
+    @JsonIgnore
     @OneToOne(mappedBy="offer")
     @ToString.Exclude
     private Product Product ;

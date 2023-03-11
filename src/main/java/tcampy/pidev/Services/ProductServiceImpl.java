@@ -39,6 +39,17 @@ public class ProductServiceImpl implements  IProductService{
         p.setCategory(C);
         productRepository.save(p);}
 
+    @Override
+    public Product findByName(String Name) {
+        return productRepository.findProductByName(Name);
+    }
+
+    @Override
+    public Product findProductByType(String Type) {
+        return productRepository.findProductByType(Type);
+    }
+
+
 //    public void assigneProductToCategory(String sku, long idProduct) {
 //    Product product =productRepository.findBySku(sku);
 //    ProductCategory productCategory =productCategoryRepository.findById(idProduct).orElse(null);

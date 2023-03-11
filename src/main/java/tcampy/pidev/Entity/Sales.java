@@ -1,4 +1,5 @@
 package tcampy.pidev.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,6 +28,8 @@ public class Sales implements Serializable {
     @Column(nullable = false)
     private LocalDateTime saleDate;
 
+
+@JsonIgnore
     @ManyToOne
     private CommandLine commandLine;
 

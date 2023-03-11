@@ -1,5 +1,6 @@
 package tcampy.pidev.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,9 +22,16 @@ public class Order implements Serializable {
     private int totalquantity ;
     private double totalPrice ;
     private String status ;
-    private LocalDate dateCreated ;
-    private LocalDate lastUpdated ;
-    
+
+    @PrePersist
+    public void calculateTotalPrice() {
+        double totalPrice = 0;
+        for (Product product : commandLine.getProducts()) {
+            totalPrice += product.getPriceSale() * product.getQuantity() +product.getPriceRental() * product.getQuantity();
+        }
+        setTotalPrice(totalPrice);
+    }
+    @JsonIgnore
     @ManyToOne
     private CommandLine commandLine;
 }

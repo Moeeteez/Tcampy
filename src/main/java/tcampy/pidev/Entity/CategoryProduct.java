@@ -1,4 +1,5 @@
 package tcampy.pidev.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,8 +17,8 @@ public class CategoryProduct implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id ;
     private String categoryName ;
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category" ,orphanRemoval =false)
     private Set<Product> products ;
 
 }

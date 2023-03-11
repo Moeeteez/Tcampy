@@ -1,4 +1,5 @@
 package tcampy.pidev.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,12 +20,11 @@ public class Payment implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date paymentDate;
     String customerId;
-//    @ManyToOne
-//    @JoinColumn(name = "sale_id")
-//    private Sales sales;
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    private User user;
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    private CommandLine commandLine;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private User user;
-//    @ManyToOne
-//    @JoinColumn(name = "rental_id")
 }

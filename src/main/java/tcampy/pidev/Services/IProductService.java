@@ -12,4 +12,6 @@ public interface IProductService{
     Product updateProduct(Product product);
     Product retrieveProductById(Long id);
     public void AddProductToCategory(Long idProduct , Long idCategory) ;
+    Product findByName(String Name) ;
+    Product findProductByType (String Type) ;
 }

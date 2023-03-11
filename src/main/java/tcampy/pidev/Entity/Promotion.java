@@ -30,9 +30,9 @@ import java.util.List;
     private LocalDate EndDate ;
     @Enumerated(EnumType.STRING)
     private PromotionType promotionType;
-    @OneToOne(mappedBy = "Promotion")
-    @JsonIgnore
-    private Product Product ;
+//    @OneToOne(mappedBy = "Promotion")
+//    @JsonIgnore
+//    private Product Product ;
 
 
 }

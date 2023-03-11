@@ -11,6 +11,6 @@ public class LoyaltyPoints implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id ;
-
-
+    private int totalPoints ;
+// relation avec user
 }

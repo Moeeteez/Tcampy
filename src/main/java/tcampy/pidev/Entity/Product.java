@@ -16,23 +16,26 @@ public class Product implements  Serializable {
     private long idProduct;
     private String sku;
     private String name;
+    private String type ;
     private String description;
-    private double priceRental;
-    private double priceSale;
+    private double priceRental = 0.0;
+    private double priceSale = 0.0;
     private String imageUrl;
     private boolean active;
     private int quantity;
-    @ManyToOne
-    private CategoryProduct category;
 
+    @JsonIgnore
+    @ManyToOne
+     CategoryProduct category;
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @ToString.Exclude
     private Offer offer  ;
-
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @ToString.Exclude
     private Promotion Promotion;
-
+    @JsonIgnore
     @ManyToOne
     private CommandLine commandLine;
 
