@@ -5,12 +5,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tcampy.pidev.DTO.ProductSaleDTO;
+import tcampy.pidev.Entity.Product;
 import tcampy.pidev.Entity.Sales;
 import tcampy.pidev.Repository.ProductRepository;
 import tcampy.pidev.Repository.SalesRepository;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -33,6 +37,25 @@ import java.util.List;
         public Sales getSalesById(Long idSales) {return salesRepository.findById(idSales).orElse(null);}
         @Override
         public List<Sales> getAllSales() {return salesRepository.findAll();}
+
+
+    @Override
+    public List<ProductSaleDTO> getTopSellingProducts(int n) {
+        List<Sales> topSales = salesRepository.findAllByOrderByQuantityDesc().stream()
+                .limit(n)
+                .collect(Collectors.toList());
+        for (Sales sale : topSales) {
+            log.info("la quantite est"+sale.getQuantity());
+        }
+
+        List<ProductSaleDTO> topProducts = new ArrayList<>();
+        for (Sales sale : topSales) {
+            Product product = sale.getProduct();
+            ProductSaleDTO productDTO = new ProductSaleDTO(product.getIdProduct(), product.getName(), product.getDescription(), product.getPriceSale(), product.getCategory());
+            topProducts.add(productDTO);
+        }
+        return topProducts;
+    }
 //        @Override
 //        public List<Sales> getSalesByDate(Date date) {
 //            return salesRepository.findBySaleDate(date);}

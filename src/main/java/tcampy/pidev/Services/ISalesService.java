@@ -1,6 +1,7 @@
 package tcampy.pidev.Services;
 
 
+import tcampy.pidev.DTO.ProductSaleDTO;
 import tcampy.pidev.Entity.Sales;
 
 import java.util.Date;
@@ -13,7 +14,9 @@ public interface ISalesService {
         void deleteSalesById(Long idSales);
         Sales getSalesById(Long idSales);
         List<Sales> getAllSales();
-     //   List<Sales> getSalesByDate(Date date);
+
+        public List<ProductSaleDTO> getTopSellingProducts(int n) ;
+        //   List<Sales> getSalesByDate(Date date);
        // List<Sales> getSalesByClient(Client client);
      //  double getTotalPrixVentesByClient(Client client);
       //  int getNombreVentesByClient(Client client);

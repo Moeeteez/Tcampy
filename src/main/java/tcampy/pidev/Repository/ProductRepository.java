@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import tcampy.pidev.Entity.Product;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 
@@ -17,4 +18,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 //    Product findByName (@Param("Name") String Name);
    Product findProductByName(String Name);
    Product findProductByType ( String Type) ;
+
+   Optional<Product> findByName(String imageurl);
+
 }

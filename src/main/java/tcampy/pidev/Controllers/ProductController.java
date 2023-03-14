@@ -3,7 +3,9 @@ package tcampy.pidev.Controllers;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import tcampy.pidev.Entity.Product;
 import tcampy.pidev.Services.ICategoryService;
 import tcampy.pidev.Services.IProductService;
@@ -62,6 +64,9 @@ public class ProductController {
     Product retriveProductByType(@PathVariable String type) {
         return iProductService.findProductByType(type);
     }
+
+
+
 }
 
 

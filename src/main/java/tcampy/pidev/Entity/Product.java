@@ -2,7 +2,10 @@ package tcampy.pidev.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,15 +17,21 @@ public class Product implements  Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idProduct")
     private long idProduct;
-    private String sku;
+    @NotNull(message = "Product name is required.")
+    @Basic(optional = false)
     private String name;
     private String type ;
     private String description;
     private double priceRental = 0.0;
     private double priceSale = 0.0;
-    private String imageUrl;
+    @Lob
+    private byte[] images;
     private boolean active;
     private int quantity;
+    private  int NbDaysForRental ;
+    @Enumerated(EnumType.STRING)
+    private OrderType  orderType;
+
 
     @JsonIgnore
     @ManyToOne
@@ -36,7 +45,7 @@ public class Product implements  Serializable {
     @ToString.Exclude
     private Promotion Promotion;
     @JsonIgnore
-    @ManyToOne
-    private CommandLine commandLine;
+    @OneToOne
+    private ImageProduct imageProduct ;
 
 }

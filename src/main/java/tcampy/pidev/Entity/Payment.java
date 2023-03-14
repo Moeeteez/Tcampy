@@ -20,9 +20,9 @@ public class Payment implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date paymentDate;
     String customerId;
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
-    private User user;
+//    @JsonIgnore
+//    @OneToOne(cascade = CascadeType.ALL)
+//    private User user;
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     private CommandLine commandLine;

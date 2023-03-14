@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,59 +14,52 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-@Builder
+@EqualsAndHashCode
 @Table(name = "CommandLine")
 public class CommandLine implements Serializable {
-    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCommandLine")
+    //@Column(name = "idCommandLine")
     @EmbeddedId
-    private CommandLineKey id;
-    private int idCmdLine;
-    private int quantityProds;
-    private int loyaltyPointsEarned;
-    private Double totalCmd = 0.0;
-
-
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "commandLine")
-    private Set<Product> products;
+    private CommandLineKey pk;
+    @Column(nullable = false)
+    private int quantityProds;
+//
+//
+//    public CommandLine(Order order, Product product, Integer quantity) {
+//        pk = new CommandLineKey();
+//        pk.setOrdre(order);
+//        pk.setProduct(product);
+//        this.quantityProds = quantity;
+
+    @Transient
+    public Product getProduct() {
+        return this.pk.getProduct();
+    }
+
+    @Transient
+    public Double getTotalPrice() {
+        return getProduct().getPriceRental() * getQuantityProds() + getProduct().getPriceSale() * getQuantityProds();
+    }
+
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "commandLine")
     private Set<Sales> sales;
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "commandLine")
     private Set<Rental> rentals;
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "commandLine")
-    private Set<Order> orders;
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "LoyaltyPoints")
-    private LoyaltyPoints LoyaltyPoints;
-
-    public Double getPrixTotal() {
-        return orders.stream()
-                .mapToDouble(Order::getTotalPrice)
-                .sum();
-    }
-
-    public void ajouterOrder(Order order) {
-        orders.add(order);
-        totalCmd = getPrixTotal();
-    }
-
-    public Double getTotalCmd() {
-        return totalCmd;
-    }
-
-    @PrePersist
-    public void beforePersist() {
-        totalCmd = getPrixTotal();
-        quantityProds = orders.stream()
-                .mapToInt(Order::getTotalquantity)
-                .sum();
-    }
 }
+//    @JsonIgnore
+//    @ManyToOne
+
+//    @JoinColumn(name = "idOrder", referencedColumnName = "idOrder", insertable = false, updatable = false)
+//    private Order order;
+//    @JsonIgnore
+//    @ManyToOne
+//    @JoinColumn(name = "idProduct", referencedColumnName = "idProduct", insertable = false, updatable = false)
+//    private Product product;
+
+
 
 

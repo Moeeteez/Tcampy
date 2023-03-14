@@ -29,8 +29,12 @@ public class Sales implements Serializable {
     private LocalDateTime saleDate;
 
 
-@JsonIgnore
+    @JsonIgnore
     @ManyToOne
     private CommandLine commandLine;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
 }

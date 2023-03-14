@@ -30,7 +30,7 @@ public class User {
         this.password = password;
     }
     @OneToOne
-    private LoyaltyPoints loyaltyPoints;
+   private LoyaltyPoints loyaltyPoints;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Order> orders ;
 }
