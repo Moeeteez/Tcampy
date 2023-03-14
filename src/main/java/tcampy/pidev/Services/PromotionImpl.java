@@ -3,7 +3,9 @@ package tcampy.pidev.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tcampy.pidev.Entity.Product;
 import tcampy.pidev.Entity.Promotion;
+import tcampy.pidev.Entity.PromotionType;
 import tcampy.pidev.Repository.PromotionRepository;
 
 import java.math.BigDecimal;
@@ -43,7 +45,7 @@ public class PromotionImpl  implements  IPromotionService {
 //        return null;
 //                ///promotionRepository.findByProductCategory(productCategory);
 //    }
-
+//
 //    @Override
 //    public double applyPromotion(Product product) {
 //        double discountedPrice = product.getPriceSale();

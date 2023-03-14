@@ -26,7 +26,7 @@ public class ImageProductService {
         ImageProduct imageCentre= imageProductRepository.save(ImageProduct.builder()
                 .name(file.getOriginalFilename())
                 .type(file.getContentType())
-                .imagaProduct(ImageUtils.compressImage(file.getBytes())).build());
+                .imageProduct(ImageUtils.compressImage(file.getBytes())).build());
         if (imageCentre != null) {
             return "file uploaded sucessfully :" + file.getOriginalFilename();
         } return null;

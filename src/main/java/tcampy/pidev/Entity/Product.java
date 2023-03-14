@@ -40,10 +40,7 @@ public class Product implements  Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @ToString.Exclude
     private Offer offer  ;
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
-    @ToString.Exclude
-    private Promotion Promotion;
+
     @JsonIgnore
     @OneToOne
     private ImageProduct imageProduct ;

@@ -14,6 +14,7 @@ import tcampy.pidev.DTO.CommandLineDto;
 import tcampy.pidev.Entity.CommandLine;
 import tcampy.pidev.Entity.Order;
 import tcampy.pidev.Entity.Product;
+import tcampy.pidev.Services.EmailSender;
 import tcampy.pidev.Services.ICommandLine;
 import tcampy.pidev.Services.IOrdreService;
 import tcampy.pidev.Services.IProductService;
@@ -122,7 +123,7 @@ public class OrderController {
 //        return ResponseEntity.ok().body(order);
 //    }
 
-
+    private final EmailSender emailSender ;
     @PutMapping("/{idO}/{idP}/{Q}")
     public ResponseEntity<Void> assignProductsToOrder(@PathVariable("idO") int idOrder,
                                                       @PathVariable ("idP") long idProduct,
@@ -134,5 +135,16 @@ public class OrderController {
     @GetMapping("/getAll")
     List<Order> retriveAllProduct() {
         return orderService.getAllOrders();
+    }
+
+
+    @PostMapping("/send")
+    public ResponseEntity<String> sendEmail(@RequestParam String to, @RequestParam String email) {
+        try {
+            emailSender.send(to, email);
+            return ResponseEntity.ok("Email sent successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send email: " + e.getMessage());
+        }
     }
 }

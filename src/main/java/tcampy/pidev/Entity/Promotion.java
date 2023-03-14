@@ -28,11 +28,12 @@ import java.util.List;
     private LocalDate StartDate ;
     @Column(nullable = false)
     private LocalDate EndDate ;
+    private  int PercentageDiscount ;
     @Enumerated(EnumType.STRING)
     private PromotionType promotionType;
-//    @OneToOne(mappedBy = "Promotion")
-//    @JsonIgnore
-//    private Product Product ;
+    @OneToOne(mappedBy = "promotion")
+    @JsonIgnore
+    private Order order  ;
 
 
 }
