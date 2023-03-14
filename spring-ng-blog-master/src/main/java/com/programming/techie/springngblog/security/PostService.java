@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityNotFoundException;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
@@ -34,11 +35,13 @@ public class PostService {
         return posts.stream().map(this::mapFromPostToDto).collect(toList());
     }
 
-    @Transactional
+
     public void createPost(PostDto postDto) {
         Post post = mapFromDtoToPost(postDto);
         postRepository.save(post);
     }
+
+
 
     @Transactional
     public PostDto readSinglePost(Long id) {
@@ -54,14 +57,39 @@ public class PostService {
         postDto.setUsername(post.getUsername());
         return postDto;
     }
+    @Transactional
+    public boolean updatePost(Long postId, PostDto postDto) {
+        Optional<Post> postOpt = postRepository.findById(postId);
+        if (postOpt.isPresent()) {
+            Post post = postOpt.get();
 
+            // Update the fields of the post entity based on the data in the DTO
+            post.setTitle(postDto.getTitle());
+            post.setContent(postDto.getContent());
+
+            postRepository.save(post);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    @Transactional
+    public boolean deletePost(Long postId) {
+        Optional<Post> postOpt = postRepository.findById(postId);
+        if (postOpt.isPresent()) {
+            postRepository.delete(postOpt.get());
+            return true;
+        } else {
+            return false;
+        }
+    }
     private Post mapFromDtoToPost(PostDto postDto) {
         Post post = new Post();
         post.setTitle(postDto.getTitle());
         post.setContent(postDto.getContent());
         User loggedInUser = authService.getCurrentUser().orElseThrow(() -> new IllegalArgumentException("User Not Found"));
         post.setCreatedOn(Instant.now());
-        post.setUsername(loggedInUser.getUsername());
+        post.setUsername(postDto.getUsername());
         post.setUpdatedOn(Instant.now());
         return post;
     }
@@ -71,6 +99,7 @@ public class PostService {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new EntityNotFoundException("Post not found with id: " + postId));
         reaction.setPost(post);
+        post.setReaction(reaction);
         return reactionRepository.save(reaction);
     }
 

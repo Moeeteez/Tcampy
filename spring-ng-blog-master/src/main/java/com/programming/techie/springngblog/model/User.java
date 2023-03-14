@@ -1,6 +1,7 @@
 package com.programming.techie.springngblog.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -14,6 +15,12 @@ public class User {
     private String password;
     @Column
     private String email;
+
+    @OneToMany(mappedBy = "sender")
+    private List<ChatMessage> sentMessages;
+
+    @OneToMany(mappedBy = "receiver")
+    private List<ChatMessage> receivedMessages;
 
     public Long getId() {
         return id;
