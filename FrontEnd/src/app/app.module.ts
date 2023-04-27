@@ -1,40 +1,34 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app.routing';
-import { NavbarModule } from './backOffice/shared/navbar/navbar.module';
-import { FooterModule } from './backOffice/shared/footer/footer.module';
-import { SidebarModule } from './backOffice/sidebar/sidebar.module';
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { AdminLayoutComponent } from './backOffice/layouts/admin-layout/admin-layout.component';
+import { HeaderAdminComponent } from './backOffice/header-admin/header-admin.component';
+import { FooterAdminComponent } from './backOffice/footer-admin/footer-admin.component';
+import { SideAdminComponent } from './backOffice/side-admin/side-admin.component';
+import { BodyAdminComponent } from './backOffice/body-admin/body-admin.component';
+import { AllTemplateAdminComponent } from './backOffice/all-template-admin/all-template-admin.component';
 import { HeaderUserComponent } from './frontOffice/header-user/header-user.component';
 import { FooterUserComponent } from './frontOffice/footer-user/footer-user.component';
-import { AlltemplateUserComponent } from './frontOffice/alltemplate-user/alltemplate-user.component';
 import { BodyUserComponent } from './frontOffice/body-user/body-user.component';
+import { AllTemplateUserComponent } from './frontOffice/all-template-user/all-template-user.component';
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    RouterModule,
-    HttpClientModule,
-    NavbarModule,
-    FooterModule,
-    SidebarModule,
-    AppRoutingModule
-  ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
+    HeaderAdminComponent,
+    FooterAdminComponent,
+    SideAdminComponent,
+    BodyAdminComponent,
+    AllTemplateAdminComponent,
     HeaderUserComponent,
     FooterUserComponent,
-    AlltemplateUserComponent,
-    BodyUserComponent
+    BodyUserComponent,
+    AllTemplateUserComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
