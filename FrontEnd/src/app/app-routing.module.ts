@@ -4,6 +4,9 @@ import {AllTemplateAdminComponent} from "./backOffice/all-template-admin/all-tem
 import {BodyAdminComponent} from "./backOffice/body-admin/body-admin.component";
 import {AllTemplateUserComponent} from "./frontOffice/all-template-user/all-template-user.component";
 import {BodyUserComponent} from "./frontOffice/body-user/body-user.component";
+import {StoreComponent} from "./frontOffice/store/store.component";
+import {ItemComponent} from "./frontOffice/item/item.component";
+import {CardlistComponent} from "./frontOffice/cardlist/cardlist.component";
 
 const routes: Routes = [
   {
@@ -24,6 +27,18 @@ const routes: Routes = [
       {
         path:'user',
         component: BodyUserComponent
+      },
+      {
+        path:'store',
+        component: StoreComponent
+      },
+      {
+        path:'item',
+        component: ItemComponent
+      },
+      {
+        path:'cardlist',
+        component: CardlistComponent
       }
     ]
   }
