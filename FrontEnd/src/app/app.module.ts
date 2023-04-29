@@ -15,6 +15,15 @@ import { AllTemplateUserComponent } from './frontOffice/all-template-user/all-te
 import { StoreComponent } from './frontOffice/store/store.component';
 import { ItemComponent } from './frontOffice/item/item.component';
 import { CardlistComponent } from './frontOffice/cardlist/cardlist.component';
+import {HttpClientModule} from "@angular/common/http";
+import { StoreDashboardComponent } from './backOffice/store-dashboard/store-dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {FormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
+import {MatButtonModule} from '@angular/material/button';
+import { AddProductComponent } from './backOffice/add-product/add-product.component';
+
 
 @NgModule({
   declarations: [
@@ -30,11 +39,19 @@ import { CardlistComponent } from './frontOffice/cardlist/cardlist.component';
     AllTemplateUserComponent,
     StoreComponent,
     ItemComponent,
-    CardlistComponent
+    CardlistComponent,
+    StoreDashboardComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    FormsModule,
+    RouterModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

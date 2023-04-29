@@ -7,6 +7,8 @@ import {BodyUserComponent} from "./frontOffice/body-user/body-user.component";
 import {StoreComponent} from "./frontOffice/store/store.component";
 import {ItemComponent} from "./frontOffice/item/item.component";
 import {CardlistComponent} from "./frontOffice/cardlist/cardlist.component";
+import {StoreDashboardComponent} from "./backOffice/store-dashboard/store-dashboard.component";
+import {AddProductComponent} from "./backOffice/add-product/add-product.component";
 
 const routes: Routes = [
   {
@@ -16,6 +18,14 @@ const routes: Routes = [
       {
         path:'admin',
         component:BodyAdminComponent
+      },
+      {
+        path: 'storedashboard',
+        component: StoreDashboardComponent
+      },
+      {
+        path: 'newproduct',
+        component: AddProductComponent
       }
     ]
 
