@@ -29,7 +29,6 @@ import { ShowProductDetailsComponent } from './backOffice/show-product-details/s
 import {MatIconModule} from '@angular/material/icon';
 import { ShowImagesDialogComponent } from './backOffice/show-images-dialog/show-images-dialog.component';
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import { ImageProcessingComponent } from './backOffice/Services/image-processing/image-processing.component';
 
 
 
@@ -52,7 +51,6 @@ import { ImageProcessingComponent } from './backOffice/Services/image-processing
     AddProductComponent,
     ShowProductDetailsComponent,
     ShowImagesDialogComponent,
-    ImageProcessingComponent
   ],
   imports: [
     BrowserModule,

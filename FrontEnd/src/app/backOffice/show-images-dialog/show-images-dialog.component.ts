@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, Injectable, OnInit} from '@angular/core';
+import {MatDialog, MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {FileHandle} from "../Models/FileHandle.model";
 
 @Component({
   selector: 'app-show-images-dialog',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowImagesDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject (MAT_DIALOG_DATA) public data : any) { }
 
   ngOnInit(): void {
+    this.receiveImages() ;
   }
-
+receiveImages() {
+    console.log (this.data) ;
+}
 }
