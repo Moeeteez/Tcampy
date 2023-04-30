@@ -26,6 +26,7 @@ import { AddProductComponent } from './backOffice/add-product/add-product.compon
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table';
 import { ShowProductDetailsComponent } from './backOffice/show-product-details/show-product-details.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -58,7 +59,8 @@ import { ShowProductDetailsComponent } from './backOffice/show-product-details/s
     RouterModule,
     MatButtonModule,
     MatGridListModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

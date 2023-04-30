@@ -15,4 +15,7 @@ public addProduct( product :FormData){
   public getAllProducts(){
     return this.httpClient.get<Product[]>("http://localhost:8009/Product/getAll")
   }
+  public  deleteProduct(idProduct: number){
+   return  this.httpClient.delete("http://localhost:8009/Product/delete/"+idProduct)
+  }
 }

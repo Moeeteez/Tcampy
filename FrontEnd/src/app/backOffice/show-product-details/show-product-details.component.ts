@@ -10,7 +10,7 @@ import {ProductService} from "../Services/product.service";
 })
 export class ShowProductDetailsComponent implements OnInit {
   productDetails: Product [] = [] ;
-  displayedColumns: string[] = ['Id', 'Name', 'Type', 'Quantity','Description','Order', 'type','Price Rental','Price Sale','Active' ];
+  displayedColumns: string[] = ['Id', 'Name', 'Type', 'Quantity','Description','Order type','Price Rental','Price Sale','Active','Edit','Delete' ];
 
   constructor(private  productService: ProductService) { }
 
@@ -26,5 +26,15 @@ export class ShowProductDetailsComponent implements OnInit {
         console.log(error)
       }
     );
+  }
+  deleteProduct(idProduct: any){
+    this.productService.deleteProduct(idProduct).subscribe(
+      (resp)=>{
+    this.getAllProducts();
+      },
+      (error:HttpErrorResponse) => {
+        console.log(error)
+      }
+      );
   }
 }
