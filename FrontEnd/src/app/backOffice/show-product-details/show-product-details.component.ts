@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from "../Models/product.model";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ProductService} from "../Services/product.service";
+import {MatDialog} from "@angular/material/dialog";
+import {ShowImagesDialogComponent} from "../show-images-dialog/show-images-dialog.component";
 
 @Component({
   selector: 'app-show-product-details',
@@ -10,9 +12,10 @@ import {ProductService} from "../Services/product.service";
 })
 export class ShowProductDetailsComponent implements OnInit {
   productDetails: Product [] = [] ;
-  displayedColumns: string[] = ['Id', 'Name', 'Type', 'Quantity','Description','Order type','Price Rental','Price Sale','Active','Edit','Delete' ];
+  displayedColumns: string[] = ['Id', 'Name', 'Type', 'Quantity','Description','Order type','Price Rental','Price Sale','Active','Images','Edit','Delete' ];
 
-  constructor(private  productService: ProductService) { }
+  constructor(private  productService: ProductService ,
+              public  imagesDialoge: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -36,5 +39,9 @@ export class ShowProductDetailsComponent implements OnInit {
         console.log(error)
       }
       );
+  }
+
+  showImages(product: Product) {
+  this.imagesDialoge.open(ShowImagesDialogComponent) ;
   }
 }

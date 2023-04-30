@@ -27,6 +27,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table';
 import { ShowProductDetailsComponent } from './backOffice/show-product-details/show-product-details.component';
 import {MatIconModule} from '@angular/material/icon';
+import { ShowImagesDialogComponent } from './backOffice/show-images-dialog/show-images-dialog.component';
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 
 
 
@@ -47,7 +49,8 @@ import {MatIconModule} from '@angular/material/icon';
     CardlistComponent,
     StoreDashboardComponent,
     AddProductComponent,
-    ShowProductDetailsComponent
+    ShowProductDetailsComponent,
+    ShowImagesDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatGridListModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
