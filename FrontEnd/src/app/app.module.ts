@@ -23,6 +23,7 @@ import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {MatButtonModule} from '@angular/material/button';
 import { AddProductComponent } from './backOffice/add-product/add-product.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { AddProductComponent } from './backOffice/add-product/add-product.compon
     MatToolbarModule,
     FormsModule,
     RouterModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

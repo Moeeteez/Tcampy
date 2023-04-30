@@ -3,6 +3,8 @@ import {Product} from "../Models/product.model";
 import {NgForm} from "@angular/forms";
 import {ProductService} from "../Services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {FileHandle} from "../Models/FileHandle.model";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-add-product',
@@ -18,23 +20,56 @@ export class AddProductComponent implements OnInit {
     priceSale : 0.0 ,
     quantity :0.0 ,
     NbDaysForRental : 0.0 ,
+    productImages: []
   }
 
 
-  constructor(private  productService :ProductService) { }
+  constructor(private  productService :ProductService ,
+              private  sanitizer : DomSanitizer) { }
 
   ngOnInit(): void {
   }
 
   addProduct(productForm:NgForm) {
-   this.productService.addProduct(this.product).subscribe(
+
+    const productFormData = this.prepareFormData(this.product);
+
+   this.productService.addProduct(productFormData).subscribe(
      (response :Product)=> {
-       console.log(response);
+      productForm.reset()
      },
      (error :HttpErrorResponse)=> {
        console.log(error);
-     }
-   )
-  }
+     })}
+  prepareFormData(product: Product): FormData{
+    const formData = new FormData() ;
 
+    formData.append(
+      'product',
+      new Blob([JSON.stringify(product)],{type:'application/json'})
+    );
+    for ( var i=0 ; i<product.productImages.length; i++) {
+      formData.append(
+        'imageFile',
+        product.productImages[i].file ,
+        product.productImages[i].file.name ) ;
+    }
+    return  formData ;
+  }
+  onFileSelected({event}: { event: any }){
+    if (event.target.files){
+      const file = event.target.files[0];
+
+      const fileHandle : FileHandle = {
+        file : file,
+        url : this.sanitizer.bypassSecurityTrustUrl(
+          window.URL.createObjectURL(file)
+        )
+
+      }
+      this.product.productImages.push(fileHandle) ;
+    }
+  }
+  removeImage(i :number) {
+    this.product.productImages.splice(i , 1)}
 }

@@ -24,7 +24,7 @@ const routes: Routes = [
         component: StoreDashboardComponent
       },
       {
-        path: 'newproduct',
+        path: 'products',
         component: AddProductComponent
       }
     ]

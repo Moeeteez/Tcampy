@@ -47,6 +47,21 @@ input:hover {
   left: 44.5%;
   top: 430px;
 }
+mat-grid-tile{
+  border: 1px solid black;
+}
+.btn-remove-image {
+  position: absolute;
+  cursor:  pointer;
+  top: -10 px ;
+  right: -10 px ;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: auto;
+  text-align: center;
+}
 /* .navbar {
     background-color: rgb(197, 216, 175);
     height: 85px;

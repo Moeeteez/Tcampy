@@ -1,3 +1,5 @@
+import {FileHandle} from "./FileHandle.model";
+
 export  interface Product {
   name:String ;
   type:String ;
@@ -6,5 +8,6 @@ export  interface Product {
   priceSale :number ;
   quantity:number ;
   NbDaysForRental :number ;
+  productImages : FileHandle[] ;
 
 }
