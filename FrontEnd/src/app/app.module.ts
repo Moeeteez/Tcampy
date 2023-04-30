@@ -24,6 +24,9 @@ import {RouterModule} from "@angular/router";
 import {MatButtonModule} from '@angular/material/button';
 import { AddProductComponent } from './backOffice/add-product/add-product.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTableModule} from '@angular/material/table';
+import { ShowProductDetailsComponent } from './backOffice/show-product-details/show-product-details.component';
+
 
 
 @NgModule({
@@ -42,7 +45,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     ItemComponent,
     CardlistComponent,
     StoreDashboardComponent,
-    AddProductComponent
+    AddProductComponent,
+    ShowProductDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FormsModule,
     RouterModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

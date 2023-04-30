@@ -9,6 +9,7 @@ import {ItemComponent} from "./frontOffice/item/item.component";
 import {CardlistComponent} from "./frontOffice/cardlist/cardlist.component";
 import {StoreDashboardComponent} from "./backOffice/store-dashboard/store-dashboard.component";
 import {AddProductComponent} from "./backOffice/add-product/add-product.component";
+import {ShowProductDetailsComponent} from "./backOffice/show-product-details/show-product-details.component";
 
 const routes: Routes = [
   {
@@ -26,7 +27,12 @@ const routes: Routes = [
       {
         path: 'products',
         component: AddProductComponent
+      },
+      {
+        path:'showproductdetails',
+        component: ShowProductDetailsComponent
       }
+
     ]
 
   },

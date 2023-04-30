@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductService} from "../Services/product.service";
+import {Product} from "../Models/product.model";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-store-dashboard',
@@ -10,6 +13,7 @@ export class StoreDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

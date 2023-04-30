@@ -1,0 +1,52 @@
+<table mat-table [dataSource]="productDetails" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.idProduct </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Quantity">
+    <th mat-header-cell *matHeaderCellDef> Quantity </th>
+    <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Order type">
+    <th mat-header-cell *matHeaderCellDef> Order type </th>
+    <td mat-cell *matCellDef="let element"> {{element.orderType}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Price Rental">
+    <th mat-header-cell *matHeaderCellDef> Price Rental </th>
+    <td mat-cell *matCellDef="let element"> {{element.priceRental}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Price Sale">
+    <th mat-header-cell *matHeaderCellDef> Price Sale </th>
+    <td mat-cell *matCellDef="let element"> {{element.priceSale}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Active">
+    <th mat-header-cell *matHeaderCellDef> Active </th>
+    <td mat-cell *matCellDef="let element"> {{element.active}} </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
