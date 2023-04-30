@@ -15,9 +15,8 @@ import java.util.Set;
 public class Product implements  Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idProduct")
     private long idProduct;
-    @NotNull(message = "Product name is required.")
+    //@NotNull(message = "Product name is required.")
     @Basic(optional = false)
     private String name;
     private String type ;
@@ -29,6 +28,17 @@ public class Product implements  Serializable {
     private boolean active;
     private int quantity;
     private  int NbDaysForRental ;
+    @ManyToMany(fetch =FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name = "product_images",
+    joinColumns = {
+            @JoinColumn(name = "product_id")
+    },
+    inverseJoinColumns = {
+            @JoinColumn(name = "image_id")
+    })
+    private  Set<ImageProduct> productImages ;
+
+
     @Enumerated(EnumType.STRING)
     private OrderType  orderType;
 
@@ -41,8 +51,8 @@ public class Product implements  Serializable {
     @ToString.Exclude
     private Offer offer  ;
 
-    @JsonIgnore
-    @OneToOne
-    private ImageProduct imageProduct ;
+//    @JsonIgnore
+//    @OneToOne
+//    private ImageProduct imageProduct ;
 
 }

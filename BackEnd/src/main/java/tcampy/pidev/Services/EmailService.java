@@ -38,7 +38,7 @@ public class EmailService implements  EmailSender {
             helper.setText(email, true);
             helper.setTo(to);
             helper.setSubject("Mail From Well Being Application");
-            helper.setFrom("elyestesting@gmail.com");
+            helper.setFrom("benslamaayatoutou@gmail.com");
             javaMailSender.send(mimeMessage);
 
         } catch (MessagingException e) {

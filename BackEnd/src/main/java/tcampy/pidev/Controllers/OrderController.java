@@ -99,18 +99,11 @@ public class OrderController {
 //    }
 //
 
-
-
-
-
-
-
-
-//    @PostMapping("/add")
-//    @ResponseBody
-//    public Order AddOrder(@RequestBody Order order) {
-//        return iOrdreService.createOrder(order);
-//    }
+    @PostMapping("/add")
+    @ResponseBody
+    public Order AddOrder(@RequestBody Order order) {
+        return iOrdreService.create(order);
+    }
 
 //    @GetMapping("/get/{id}")
 //    Order retriveOrdre(@PathVariable int id) {
@@ -122,8 +115,9 @@ public class OrderController {
 //        Order order = iOrdreService.createOrder(commandLineDtos);
 //        return ResponseEntity.ok().body(order);
 //    }
-
     private final EmailSender emailSender ;
+
+
     @PutMapping("/{idO}/{idP}/{Q}")
     public ResponseEntity<Void> assignProductsToOrder(@PathVariable("idO") int idOrder,
                                                       @PathVariable ("idP") long idProduct,

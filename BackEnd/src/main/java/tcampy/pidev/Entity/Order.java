@@ -48,7 +48,6 @@ public class Order implements Serializable {
 //        }
 //        return sum;
 //    }
-
     @Transient
     public Double getTotalOrderPrice() {
         double sum = 0D;
@@ -56,7 +55,6 @@ public class Order implements Serializable {
         for (CommandLine op : commandLines) {
             sum += op.getTotalPrice();
         }
-
         if (promotion != null) {
             double discountedPrice = sum;
             if (promotion.getPromotionType() == PromotionType.HAPPY_DAYS) {
@@ -71,11 +69,9 @@ public class Order implements Serializable {
                     int percentageDiscount = promotion.getPercentageDiscount();
                     discountedPrice *= (100 - percentageDiscount) / 100.0;
                 }
-
             }
             sum = discountedPrice;
         }
-
         return sum;
     }
 
