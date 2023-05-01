@@ -16,4 +16,5 @@ public interface IProductService{
     Product findByName(String Name) ;
     Product findProductByType (String Type) ;
      Product getProductDetailsById( Long idProduct) ;
+   // List<Product> getProductDetails(boolean isSingleProductCheckout, Integer productId)
 }

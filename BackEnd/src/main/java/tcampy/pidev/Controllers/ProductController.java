@@ -91,6 +91,11 @@ public class ProductController {
         return  iProductService.getProductDetailsById(idProduct) ;
     }
 
+//    @GetMapping({"/getProductDetails/{isSingleProductCheckout}/{productId}"})
+//    public List<Product> getProductDetails(@PathVariable(name = "isSingleProductCheckout" ) boolean isSingleProductCheckout,
+//                                           @PathVariable(name = "productId")  Integer productId) {
+//        return iProductService.getProductDetails(isSingleProductCheckout, productId);
+//    }
 }
 
 

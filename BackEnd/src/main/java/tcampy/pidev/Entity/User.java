@@ -7,12 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.*;
 import java.util.Set;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
 @Entity
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -29,11 +25,8 @@ public class User {
 //                    @JoinColumn(name = "ROLE_ID")
 //            }
 //    )
-//    private Set<Role> role;
-
-    public String getUserName() {
-        return userName;
-    }
+//
+//
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -63,11 +56,10 @@ public class User {
         this.userPassword = userPassword;
     }
 
-//    public Set<Role> getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(Set<Role> role) {
-//        this.role = role;
-//    }
+    public User(String userName, String userFirstName, String userLastName, String userPassword) {
+        this.userName = userName;
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
+        this.userPassword = userPassword;
+    }
 }

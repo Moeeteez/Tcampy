@@ -23,39 +23,55 @@ import java.util.stream.Collectors;
 
     @Autowired
     private SalesRepository salesRepository;
-//        @Autowired
+    //        @Autowired
 //    private MailService mailService;
     @Autowired
     ProductRepository productRepo;
-        @Override
-        public Sales updateVente(Sales sales) {return salesRepository.save(sales);}
-    @Override
-    public Sales addVente(Sales sales) {return salesRepository.save(sales);}
-    @Override
-    public void deleteSalesById(Long idSales) {salesRepository.deleteById(idSales);}
-        @Override
-        public Sales getSalesById(Long idSales) {return salesRepository.findById(idSales).orElse(null);}
-        @Override
-        public List<Sales> getAllSales() {return salesRepository.findAll();}
-
 
     @Override
-    public List<ProductSaleDTO> getTopSellingProducts(int n) {
-        List<Sales> topSales = salesRepository.findAllByOrderByQuantityDesc().stream()
-                .limit(n)
-                .collect(Collectors.toList());
-        for (Sales sale : topSales) {
-            log.info("la quantite est"+sale.getQuantity());
-        }
-
-        List<ProductSaleDTO> topProducts = new ArrayList<>();
-        for (Sales sale : topSales) {
-            Product product = sale.getProduct();
-            ProductSaleDTO productDTO = new ProductSaleDTO(product.getIdProduct(), product.getName(), product.getDescription(), product.getPriceSale(), product.getCategory());
-            topProducts.add(productDTO);
-        }
-        return topProducts;
+    public Sales updateVente(Sales sales) {
+        return salesRepository.save(sales);
     }
+
+    @Override
+    public Sales addVente(Sales sales) {
+        return salesRepository.save(sales);
+    }
+
+    @Override
+    public void deleteSalesById(Long idSales) {
+        salesRepository.deleteById(idSales);
+    }
+
+    @Override
+    public Sales getSalesById(Long idSales) {
+        return salesRepository.findById(idSales).orElse(null);
+    }
+
+    @Override
+    public List<Sales> getAllSales() {
+        return salesRepository.findAll();
+    }
+}
+
+
+   // @Override
+//    public List<ProductSaleDTO> getTopSellingProducts(int n) {
+//        List<Sales> topSales = salesRepository.findAllByOrderByQuantityDesc().stream()
+//                .limit(n)
+//                .collect(Collectors.toList());
+//        for (Sales sale : topSales) {
+//            log.info("la quantite est"+sale.getQuantity());
+//        }
+//
+//        List<ProductSaleDTO> topProducts = new ArrayList<>();
+//        for (Sales sale : topSales) {
+//            Product product = sale.getProduct();
+//            ProductSaleDTO productDTO = new ProductSaleDTO(product.getIdProduct(), product.getName(), product.getDescription(), product.getPriceSale(), product.getCategory());
+//            topProducts.add(productDTO);
+//        }
+//        return topProducts;
+//    }
 //        @Override
 //        public List<Sales> getSalesByDate(Date date) {
 //            return salesRepository.findBySaleDate(date);}
@@ -76,4 +92,4 @@ import java.util.stream.Collectors;
 //        return  null ;
 //    }
 
-}
+

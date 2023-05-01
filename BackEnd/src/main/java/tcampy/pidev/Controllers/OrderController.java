@@ -11,14 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tcampy.pidev.DTO.CommandDTO;
 import tcampy.pidev.DTO.CommandLineDto;
-import tcampy.pidev.Entity.CommandLine;
-import tcampy.pidev.Entity.Order;
-import tcampy.pidev.Entity.OrderInput;
-import tcampy.pidev.Entity.Product;
-import tcampy.pidev.Services.EmailSender;
-import tcampy.pidev.Services.ICommandLine;
-import tcampy.pidev.Services.IOrdreService;
-import tcampy.pidev.Services.IProductService;
+import tcampy.pidev.Entity.*;
+import tcampy.pidev.Services.*;
 import tcampy.pidev.exception.ResourceNotFoundException;
 
 import javax.validation.constraints.NotNull;
@@ -101,10 +95,10 @@ public class OrderController {
 //    }
 //
 
-    @PostMapping("/placeOrder")
-    public void AddOrder(@RequestBody OrderInput orderInput) {
-         iOrdreService.placeOrder(orderInput);
-    }
+//    @PostMapping("/placeOrder")
+//    public void AddOrder(@RequestBody OrderInput orderInput) {
+//         iOrdreService.placeOrder(orderInput);
+//    }
 
 
 //    @GetMapping("/get/{id}")
@@ -143,4 +137,35 @@ public class OrderController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send email: " + e.getMessage());
         }
     }
+//////////////////////////////////////////////////////////////////
+    @Autowired
+    private OrderDetailService orderDetailService;
+
+
+    @PostMapping({"/placeOrder"})
+    public void placeOrder(@RequestBody OrderInput orderInput) {
+        orderDetailService.placeOrder(orderInput);
+    }
+//
+//    @GetMapping({"/getOrderDetails"})
+//    public List<OrderDetail> getOrderDetails() {
+//        return orderDetailService.getOrderDetails();
+//    }
+//
+//
+//    @GetMapping({"/getAllOrderDetails/{status}"})
+//    public List<OrderDetail> getAllOrderDetails(@PathVariable(name = "status") String status) {
+//        return orderDetailService.getAllOrderDetails(status);
+//    }
+//
+//    @GetMapping({"/markOrderAsDelivered/{orderId}"})
+//    public void markOrderAsDelivered(@PathVariable(name = "orderId") Integer orderId) {
+//        orderDetailService.markOrderAsDelivered(orderId);
+//    }
+//
+//
+//    @GetMapping({"/createTransaction/{amount}"})
+//    public TransactionDetails createTransaction(@PathVariable(name = "amount") Double amount) {
+//        return orderDetailService.createTransaction(amount);
+//    }
 }

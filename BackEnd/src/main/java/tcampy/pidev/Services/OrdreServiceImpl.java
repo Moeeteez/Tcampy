@@ -44,6 +44,11 @@ public class OrdreServiceImpl  implements  IOrdreService{
     @Override
     public void deleteOrderById(int Id) {ordreRepository.deleteById(Id);}
 
+    @Override
+    public void assignProductToOrder(int orderId, long productId, int quantity) {
+
+    }
+
     @Autowired
     private OrdreRepository orderRepository;
     @Autowired
@@ -54,45 +59,45 @@ public class OrdreServiceImpl  implements  IOrdreService{
     private final ProductRepository productRepository;
 
 
-    @Override
-    public void assignProductToOrder(int orderId, long productId , int quantity) {
-
-        Order order = orderRepository.findById(orderId).orElse(null);
-
-        Product product = productRepository.findById(productId).orElse(null);
-
-        CommandLine commandLine = new CommandLine();
-        commandLine.setQuantityProds(quantity);
-        CommandLineKey pk = new CommandLineKey();
-        pk.setOrdre(order);
-        pk.setProduct(product);
-        commandLine.setPk(pk);
-
-
-        order.getCommandLines().add(commandLine);
-
-
-        orderRepository.save(order);
-        commandLineRepository.save(commandLine);
-    }
+//    @Override
+//    public void assignProductToOrder(int orderId, long productId , int quantity) {
+//
+//        Order order = orderRepository.findById(orderId).orElse(null);
+//
+//        Product product = productRepository.findById(productId).orElse(null);
+//
+//        CommandLine commandLine = new CommandLine();
+//        commandLine.setQuantityProds(quantity);
+//        CommandLineKey pk = new CommandLineKey();
+//        pk.setOrdre(order);
+//        pk.setProduct(product);
+//        commandLine.setPk(pk);
+//
+//
+//        order.getCommandLines().add(commandLine);
+//
+//
+//        orderRepository.save(order);
+//        commandLineRepository.save(commandLine);
+//    }
 
     public void placeOrder (OrderInput orderInput){
         List<OrderProductQuantity>productQuantityList = orderInput.getOrderProductQuantityList();
         for (OrderProductQuantity o : productQuantityList) {
             User user = new User("moeeteez","moetez","hammadi","moet1544");
             Product product = productRepository.findById(Long.valueOf(o.getProductId())).get() ;
-            Order order = new Order(
-                    orderInput.getFullName(),
-                    orderInput.getFullAddress(),
-                    orderInput.getContactNumber(),
-                    orderInput.getAlternateContactNumber(),
-                    ORDER_PLACED,
-                    product.getPriceSale()*o.getQuantity() ,
-                    product,
-                    user
-
-            ) ;
-            ordreRepository.save(order) ;
+//            Order order = new Order(
+//                    orderInput.getFullName(),
+//                    orderInput.getFullAddress(),
+//                    orderInput.getContactNumber(),
+//                    orderInput.getAlternateContactNumber(),
+//                    ORDER_PLACED,
+//                    product.getPriceSale()*o.getQuantity() ,
+//                    product,
+//                    user
+//
+//            ) ;
+//            ordreRepository.save(order) ;
         }
     }
 

@@ -31,9 +31,9 @@ import java.util.List;
     private  int PercentageDiscount ;
     @Enumerated(EnumType.STRING)
     private PromotionType promotionType;
-    @OneToOne(mappedBy = "promotion")
-    @JsonIgnore
-    private Order order  ;
+//    @OneToOne(mappedBy = "promotion")
+//    @JsonIgnore
+//    private Order order  ;
 
 
 }

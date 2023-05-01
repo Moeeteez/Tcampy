@@ -15,7 +15,7 @@ public interface ISalesService {
         Sales getSalesById(Long idSales);
         List<Sales> getAllSales();
 
-        public List<ProductSaleDTO> getTopSellingProducts(int n) ;
+      //  public List<ProductSaleDTO> getTopSellingProducts(int n) ;
         //   List<Sales> getSalesByDate(Date date);
        // List<Sales> getSalesByClient(Client client);
      //  double getTotalPrixVentesByClient(Client client);

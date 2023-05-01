@@ -51,10 +51,10 @@ public class SaleController {
         salesService.deleteSalesById(id);
     }
 
-    @GetMapping("/top-selling-products/{n}")
-    public ResponseEntity<List<ProductSaleDTO>> getTopSellingProducts(@PathVariable("n") int n) {
-        List<ProductSaleDTO> topProducts = salesService.getTopSellingProducts(n);
-        return ResponseEntity.ok(topProducts);
-    }
+//    @GetMapping("/top-selling-products/{n}")
+//    public ResponseEntity<List<ProductSaleDTO>> getTopSellingProducts(@PathVariable("n") int n) {
+//        List<ProductSaleDTO> topProducts = salesService.getTopSellingProducts(n);
+//        return ResponseEntity.ok(topProducts);
+//    }
 
 }
