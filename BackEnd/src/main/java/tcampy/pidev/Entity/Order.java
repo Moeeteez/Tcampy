@@ -23,15 +23,50 @@ import java.util.Set;
 public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idOrder;
+    private long idOrder;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dateCreated;
+//    @JsonFormat(pattern = "dd/MM/yyyy")
+//    private LocalDate dateCreated;
 
-//    @JsonIgnore
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
-//    private List<CommandLine> commandLines;
-  //  @JsonManagedReference
+    private String orderFullName ;
+    private String orderFullOrder ;
+    private String orderContactNumber ;
+    private String orderAlternateContactNumber ;
+    private  String Status ;
+    private Double orderAmount ;
+    @OneToOne
+    private  Product product ;
+    @OneToOne
+    private User user ;
+
+    public Order(String orderFullName, String orderFullOrder, String orderContactNumber, String orderAlternateContactNumber, String status, Double orderAmount, Product product, User user, List<CommandLine> commandLines) {
+        this.orderFullName = orderFullName;
+        this.orderFullOrder = orderFullOrder;
+        this.orderContactNumber = orderContactNumber;
+        this.orderAlternateContactNumber = orderAlternateContactNumber;
+        Status = status;
+        this.orderAmount = orderAmount;
+        this.product = product;
+        this.user = user;
+        CommandLines = commandLines;
+    }
+
+    public Order(String orderFullName, String orderFullOrder, String orderContactNumber, String orderAlternateContactNumber, String status, Double orderAmount) {
+        this.orderFullName = orderFullName;
+        this.orderFullOrder = orderFullOrder;
+        this.orderContactNumber = orderContactNumber;
+        this.orderAlternateContactNumber = orderAlternateContactNumber;
+        Status = status;
+        this.orderAmount = orderAmount;
+    }
+
+    public Order(String orderFullName, String orderFullOrder, String orderContactNumber, String orderAlternateContactNumber) {
+        this.orderFullName = orderFullName;
+        this.orderFullOrder = orderFullOrder;
+        this.orderContactNumber = orderContactNumber;
+        this.orderAlternateContactNumber = orderAlternateContactNumber;
+    }
+
     @OneToMany(mappedBy = "pk.ordre")
     //@JoinColumn(name = "order_id") // nom de la colonne de clé étrangère dans la table enfant
 
@@ -39,7 +74,11 @@ public class Order implements Serializable {
 
     @Valid
     private List<CommandLine> CommandLines= new ArrayList<>() ;
-//    @Transient
+
+    public Order(String fullName, String fullAddress, String contactNumber, String alternateContactNumber, String orderPlaced, double v, Product product, User user) {
+    }
+
+    //    @Transient
 //    public Double getTotalOrderPrice() {
 //        double sum = 0D;
 //        List<CommandLine> CommandLines = getCommandLines();

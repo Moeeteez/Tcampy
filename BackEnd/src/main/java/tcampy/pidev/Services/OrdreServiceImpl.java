@@ -8,6 +8,7 @@ import tcampy.pidev.Entity.*;
 import tcampy.pidev.Repository.CommandLineRepository;
 import tcampy.pidev.Repository.OrdreRepository;
 import tcampy.pidev.Repository.ProductRepository;
+import tcampy.pidev.Repository.UserRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
@@ -18,6 +19,8 @@ import java.util.Optional;
 @Transactional
 
 public class OrdreServiceImpl  implements  IOrdreService{
+
+    private  static final String ORDER_PLACED ="Placed" ;
     @Autowired
     private OrdreRepository ordreRepository ;
     public OrdreServiceImpl(OrdreRepository OrdreRepository,
@@ -43,6 +46,8 @@ public class OrdreServiceImpl  implements  IOrdreService{
 
     @Autowired
     private OrdreRepository orderRepository;
+    @Autowired
+    private UserRepository userRepository ;
 
     @Autowired
     private CommandLineRepository commandLineRepository;
@@ -69,6 +74,26 @@ public class OrdreServiceImpl  implements  IOrdreService{
 
         orderRepository.save(order);
         commandLineRepository.save(commandLine);
+    }
+
+    public void placeOrder (OrderInput orderInput){
+        List<OrderProductQuantity>productQuantityList = orderInput.getOrderProductQuantityList();
+        for (OrderProductQuantity o : productQuantityList) {
+            User user = new User("moeeteez","moetez","hammadi","moet1544");
+            Product product = productRepository.findById(Long.valueOf(o.getProductId())).get() ;
+            Order order = new Order(
+                    orderInput.getFullName(),
+                    orderInput.getFullAddress(),
+                    orderInput.getContactNumber(),
+                    orderInput.getAlternateContactNumber(),
+                    ORDER_PLACED,
+                    product.getPriceSale()*o.getQuantity() ,
+                    product,
+                    user
+
+            ) ;
+            ordreRepository.save(order) ;
+        }
     }
 
 

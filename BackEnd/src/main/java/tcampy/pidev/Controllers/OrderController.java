@@ -13,6 +13,7 @@ import tcampy.pidev.DTO.CommandDTO;
 import tcampy.pidev.DTO.CommandLineDto;
 import tcampy.pidev.Entity.CommandLine;
 import tcampy.pidev.Entity.Order;
+import tcampy.pidev.Entity.OrderInput;
 import tcampy.pidev.Entity.Product;
 import tcampy.pidev.Services.EmailSender;
 import tcampy.pidev.Services.ICommandLine;
@@ -31,6 +32,7 @@ import java.util.stream.Collectors;
 @RestController
 @Slf4j
 @RequestMapping("/orders")
+@CrossOrigin(origins = "*")
 public class OrderController {
     @Autowired
     IOrdreService iOrdreService;
@@ -99,11 +101,11 @@ public class OrderController {
 //    }
 //
 
-    @PostMapping("/add")
-    @ResponseBody
-    public Order AddOrder(@RequestBody Order order) {
-        return iOrdreService.create(order);
+    @PostMapping("/placeOrder")
+    public void AddOrder(@RequestBody OrderInput orderInput) {
+         iOrdreService.placeOrder(orderInput);
     }
+
 
 //    @GetMapping("/get/{id}")
 //    Order retriveOrdre(@PathVariable int id) {

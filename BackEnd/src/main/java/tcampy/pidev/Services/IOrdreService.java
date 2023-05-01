@@ -2,6 +2,7 @@ package tcampy.pidev.Services;
 
 import org.springframework.validation.annotation.Validated;
 import tcampy.pidev.Entity.Order ;
+import tcampy.pidev.Entity.OrderInput;
 import tcampy.pidev.Entity.Product;
 
 import javax.validation.Valid;
@@ -22,6 +23,7 @@ public interface IOrdreService {
      public Order create(Order order);
  void deleteOrderById(int Id);
     public void assignProductToOrder(int orderId, long productId,int quantity) ;
+    void placeOrder (OrderInput orderInput);
 //
 //    public Iterable<Order> getAllOrders() ;
 // public Order createOrder(List<CommandLineDTO> commandLineDtos) ;
