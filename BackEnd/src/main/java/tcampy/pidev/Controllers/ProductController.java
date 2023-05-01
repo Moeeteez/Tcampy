@@ -67,11 +67,6 @@ public class ProductController {
         return iProductService.updateProduct(product);
     }
 
-    @GetMapping("/get/{id}")
-    Product retriveProduct(@PathVariable long id) {
-        return iProductService.retrieveProductById(id);
-    }
-
     @DeleteMapping("/delete/{id}")
     void deleteProduct(@PathVariable long id) {
         iProductService.deleteProduct(id);
@@ -91,7 +86,10 @@ public class ProductController {
         return iProductService.findProductByType(type);
     }
 
-
+    @GetMapping("/get/{idProduct}")
+    public Product getProductDetailsById( @PathVariable("idProduct") Long idProduct){
+        return  iProductService.getProductDetailsById(idProduct) ;
+    }
 
 }
 

@@ -56,6 +56,9 @@ public class ProductServiceImpl implements  IProductService{
     public Product findProductByType(String Type) {
         return productRepository.findProductByType(Type);
     }
+    public Product getProductDetailsById( Long idProduct){
+       return productRepository.findById(idProduct).get() ;
+    }
 
 
 //    public void assigneProductToCategory(String sku, long idProduct) {
