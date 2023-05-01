@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:'', component: AllTemplateUserComponent, children:[
       {path:'user', component: BodyUserComponent},
       {path:'store', component: StoreComponent},
-      {path:'item', component: ItemComponent},
+      {path:'itemDetails', component: ItemComponent, resolve: {product: ProductResolveService}},
       {path:'cardlist', component: CardlistComponent}]}];
 
 @NgModule({

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="mt-5 p-3">
 
 <table mat-table [dataSource]="productDetails" class="mat-elevation-z8">
 
@@ -47,34 +47,21 @@
   </ng-container>
 
   <--------images----->
-  <ng-container matColumnDef="Images">
-    <th mat-header-cell *matHeaderCellDef> Images </th>
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
     <td mat-cell *matCellDef="let element">
       <button mat-icon-button color="primary" (click)="showImages(element)" >
         <mat-icon> images </mat-icon>
       </button>
-    </td>
-  </ng-container>
-
-<-- edit button --->
-  <ng-container matColumnDef="Edit">
-    <th mat-header-cell *matHeaderCellDef> Edit </th>
-    <td mat-cell *matCellDef="let element">
-    <button mat-icon-button color="primary" (click)="editProductDetails(element.idProduct)">
-      <mat-icon> edit </mat-icon>
-    </button>
-    </td>
-  </ng-container>
-
-  <-- delete button --->
-  <ng-container matColumnDef="Delete">
-    <th mat-header-cell *matHeaderCellDef> Delete </th>
-    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary" (click)="editProductDetails(element.idProduct)">
+        <mat-icon> edit </mat-icon>
+      </button>
       <button mat-icon-button color="warn"(click)="deleteProduct(element.idProduct)" >
         <mat-icon> delete </mat-icon>
       </button>
     </td>
   </ng-container>
+
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

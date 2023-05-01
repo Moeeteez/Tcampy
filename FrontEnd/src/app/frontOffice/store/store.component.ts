@@ -4,6 +4,7 @@ import {map} from "rxjs";
 import {Product} from "../../backOffice/Models/product.model";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ImageProcessingService} from "../../backOffice/Services/image-processing.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-store',
@@ -13,7 +14,8 @@ import {ImageProcessingService} from "../../backOffice/Services/image-processing
 export class StoreComponent implements OnInit {
   productDetails: Product [] = [] ;
   constructor(private productService: ProductService,
-  private  imageProcessingService : ImageProcessingService) { }
+  private  imageProcessingService : ImageProcessingService,
+  private router:Router) { }
 
   ngOnInit(): void {
     this.getAllProducts()
@@ -31,6 +33,10 @@ export class StoreComponent implements OnInit {
           console.log(error)
         }
       );
+  }
+  showProductDetails(idProduct : any){
+    this.router.navigate(['/itemDetails',{idProduct : idProduct}])
+
   }
 
 }

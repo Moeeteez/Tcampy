@@ -44,88 +44,30 @@
 <div class="container">
   <br>
   <div class="row">
-    <div class="col-md-3 col-sm-6">
+    <div class="col-md-3 col-sm-6" *ngFor="let p of productDetails">
       <div class="product-grid2">
-        <div class="product-image2">
-          <a href="#">
-            <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
-            <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png">
+        <div style="" class="product-image2">
+          <a href="#" class="home-page-product-image">
+            <div class="image-container">
+              <a href="#">
+            <img   class="pic-1" [src]="p.productImages[0].url">
+            <img  class="pic-2" [src]="p.productImages[1].url">
+              </a>
+            </div>
           </a>
           <ul class="social">
-            <li><a routerLink="/item" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
+            <li><a routerLink="/item" data-tip="Quick View" (click)="showProductDetails(p.idProduct)"><i class="fa fa-eye"></i></a></li>
             <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
             <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
           </ul>
           <a class="add-to-cart" href="">Add to cart</a>
         </div>
         <div class="product-content">
-          <h3 class="title"><a href="#">Women's Designer Top</a></h3>
-          <span class="price">$599.99</span>
+          <h3 class="title">{{p.name}}</h3>
+          <span class="price">{{p.priceSale}} DT</span>
         </div>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="product-grid2">
-        <div class="product-image2">
-          <a href="#">
-            <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
-            <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png">
-          </a>
-          <ul class="social">
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-            <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-            <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-          </ul>
-          <a class="add-to-cart" href="">Add to cart</a>
-        </div>
-        <div class="product-content">
-          <h3 class="title"><a href="#">Women's Yellow Top</a></h3>
-          <span class="price">$699.99</span>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="product-grid2">
-        <div class="product-image2">
-          <a href="#">
-            <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
-            <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png">
-          </a>
-          <ul class="social">
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-            <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-            <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-          </ul>
-          <a class="add-to-cart" href="">Add to cart</a>
-        </div>
-        <div class="product-content">
-          <h3 class="title"><a href="#">Women's Designer Top</a></h3>
-          <span class="price">$599.99</span>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="product-grid2">
-        <div class="product-image2">
-          <a href="#">
-            <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
-            <img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png">
-          </a>
-          <ul class="social">
-            <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-            <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-            <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-          </ul>
-          <a class="add-to-cart" href="">Add to cart</a>
-        </div>
-        <div class="product-content">
-          <h3 class="title"><a href="#">Women's Designer Top</a></h3>
-
-          <span class="price">$599.99</span>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
 <hr>
