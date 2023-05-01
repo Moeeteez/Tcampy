@@ -10,55 +10,22 @@ import {CardlistComponent} from "./frontOffice/cardlist/cardlist.component";
 import {StoreDashboardComponent} from "./backOffice/store-dashboard/store-dashboard.component";
 import {AddProductComponent} from "./backOffice/add-product/add-product.component";
 import {ShowProductDetailsComponent} from "./backOffice/show-product-details/show-product-details.component";
+import {ProductResolveService} from "./backOffice/Services/product-resolve.service";
 
 const routes: Routes = [
-  {
-    path:'admin',
-    component:AllTemplateAdminComponent,
-    children:[
-      {
-        path:'admin',
-        component:BodyAdminComponent
-      },
-      {
-        path: 'storedashboard',
-        component: StoreDashboardComponent
-      },
-      {
-        path: 'products',
-        component: AddProductComponent
-      },
-      {
-        path:'showproductdetails',
-        component: ShowProductDetailsComponent
-      }
+  {path:'admin', component:AllTemplateAdminComponent, children:[
+      {path:'admin', component:BodyAdminComponent},
+      {path: 'storedashboard', component: StoreDashboardComponent},
 
-    ]
+    ]},
+  {path:'showproductdetails', component: ShowProductDetailsComponent},
+  {path: 'products', component: AddProductComponent, resolve: {product: ProductResolveService}},
 
-  },
-  {
-    path:'',
-    component: AllTemplateUserComponent,
-    children:[
-      {
-        path:'user',
-        component: BodyUserComponent
-      },
-      {
-        path:'store',
-        component: StoreComponent
-      },
-      {
-        path:'item',
-        component: ItemComponent
-      },
-      {
-        path:'cardlist',
-        component: CardlistComponent
-      }
-    ]
-  }
-];
+  {path:'', component: AllTemplateUserComponent, children:[
+      {path:'user', component: BodyUserComponent},
+      {path:'store', component: StoreComponent},
+      {path:'item', component: ItemComponent},
+      {path:'cardlist', component: CardlistComponent}]}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
