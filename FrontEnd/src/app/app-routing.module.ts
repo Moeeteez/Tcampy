@@ -11,6 +11,7 @@ import {StoreDashboardComponent} from "./backOffice/store-dashboard/store-dashbo
 import {AddProductComponent} from "./backOffice/add-product/add-product.component";
 import {ShowProductDetailsComponent} from "./backOffice/show-product-details/show-product-details.component";
 import {ProductResolveService} from "./backOffice/Services/product-resolve.service";
+import {BuyProductComponent} from "./frontOffice/buy-product/buy-product.component";
 
 const routes: Routes = [
   {path:'admin', component:AllTemplateAdminComponent, children:[
@@ -25,7 +26,8 @@ const routes: Routes = [
       {path:'user', component: BodyUserComponent},
       {path:'store', component: StoreComponent},
       {path:'itemDetails', component: ItemComponent, resolve: {product: ProductResolveService}},
-      {path:'cardlist', component: CardlistComponent}]}];
+      {path:'cardlist', component: CardlistComponent},
+      {path:'buyProduct', component: BuyProductComponent}]}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
