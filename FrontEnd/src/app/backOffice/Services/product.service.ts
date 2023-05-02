@@ -31,7 +31,7 @@ public addProduct( product :FormData){
   }
 
   public placeOrder(orderDetails: OrderDetails){
-    return this.httpClient.post("http://localhost:8009/placeOrder", orderDetails) ;
+    return this.httpClient.post("http://localhost:8009/orders/placeOrder", orderDetails) ;
   }
 
 }
