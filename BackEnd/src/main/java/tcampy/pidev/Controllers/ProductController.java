@@ -68,12 +68,12 @@ public class ProductController {
     }
 
     @DeleteMapping("/delete/{id}")
-    void deleteProduct(@PathVariable long id) {
+    void deleteProduct(@PathVariable Integer id) {
         iProductService.deleteProduct(id);
     }
 
     @PutMapping("/AddToCategory/{idProduct}/{idCategory}")
-    public void AddProductToCategory(@PathVariable long idProduct, @PathVariable long idCategory) {
+    public void AddProductToCategory(@PathVariable Integer idProduct, @PathVariable long idCategory) {
         iProductService.AddProductToCategory(idProduct, idCategory);
     }
     @GetMapping("/{name}")
@@ -87,7 +87,7 @@ public class ProductController {
     }
 
     @GetMapping("/get/{idProduct}")
-    public Product getProductDetailsById( @PathVariable("idProduct") Long idProduct){
+    public Product getProductDetailsById( @PathVariable("idProduct") Integer idProduct){
         return  iProductService.getProductDetailsById(idProduct) ;
     }
 
@@ -96,6 +96,12 @@ public class ProductController {
 //                                           @PathVariable(name = "productId")  Integer productId) {
 //        return iProductService.getProductDetails(isSingleProductCheckout, productId);
 //    }
+
+//@GetMapping({"/getProductDetails/{isSingleProductCheckout}/{productId}"})
+//public List<Product> getProductDetails(@PathVariable(name = "isSingleProductCheckout" ) boolean isSingleProductCheckout,
+//                                       @PathVariable(name = "productId")  Integer productId) {
+//    return iProductService.getProductDetails(isSingleProductCheckout, productId);
+//}
 }
 
 

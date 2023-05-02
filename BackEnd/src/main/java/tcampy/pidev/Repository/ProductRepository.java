@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 
-public interface ProductRepository extends JpaRepository<Product,Long> {
+public interface ProductRepository extends JpaRepository<Product,Integer> {
 
    // Product findBySku(String sku) ;
 //   @Query("select p from Product p where p.name=:Name")

@@ -15,7 +15,7 @@ import java.util.Set;
 public class Product implements  Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idProduct;
+    private Integer idProduct;
     //@NotNull(message = "Product name is required.")
     @Basic(optional = false)
     private String name;

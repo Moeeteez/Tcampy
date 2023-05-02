@@ -85,7 +85,7 @@ public class OrdreServiceImpl  implements  IOrdreService{
         List<OrderProductQuantity>productQuantityList = orderInput.getOrderProductQuantityList();
         for (OrderProductQuantity o : productQuantityList) {
             User user = new User("moeeteez","moetez","hammadi","moet1544");
-            Product product = productRepository.findById(Long.valueOf(o.getProductId())).get() ;
+            Product product = productRepository.findById((o.getProductId())).get() ;
 //            Order order = new Order(
 //                    orderInput.getFullName(),
 //                    orderInput.getFullAddress(),

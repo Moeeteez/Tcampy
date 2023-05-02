@@ -30,6 +30,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { ShowImagesDialogComponent } from './backOffice/show-images-dialog/show-images-dialog.component';
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {BuyProductComponent} from "./frontOffice/buy-product/buy-product.component";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -66,7 +68,10 @@ import {BuyProductComponent} from "./frontOffice/buy-product/buy-product.compone
     MatTableModule,
     MatIconModule,
     MatDialogModule,
-  ],
+    MatFormFieldModule,
+    MatInputModule
+
+],
   providers: [],
   bootstrap: [AppComponent]
 })

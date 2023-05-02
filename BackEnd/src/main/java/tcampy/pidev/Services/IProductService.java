@@ -9,12 +9,12 @@ import java.util.List;
 public interface IProductService{
     List<Product> retriveAllProduct();
     Product AddProduct(Product product);
-    void deleteProduct(Long id);
+    void deleteProduct(Integer id);
     Product updateProduct(Product product);
-    Product retrieveProductById(Long id);
-    public void AddProductToCategory(Long idProduct , Long idCategory) ;
+    Product retrieveProductById(Integer id);
+    public void AddProductToCategory(Integer idProduct , Long idCategory) ;
     Product findByName(String Name) ;
     Product findProductByType (String Type) ;
-     Product getProductDetailsById( Long idProduct) ;
-   // List<Product> getProductDetails(boolean isSingleProductCheckout, Integer productId)
+     Product getProductDetailsById( Integer idProduct) ;
+   //List<Product> getProductDetails(boolean isSingleProductCheckout, Integer productId);
 }

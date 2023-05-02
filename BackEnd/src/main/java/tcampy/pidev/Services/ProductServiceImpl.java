@@ -9,6 +9,7 @@ import tcampy.pidev.Entity.CategoryProduct;
 import tcampy.pidev.Entity.Product;
 import tcampy.pidev.Repository.CategoryProductRepository;
 import tcampy.pidev.Repository.ProductRepository;
+import tcampy.pidev.dao.ProductDao;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,6 +21,10 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements  IProductService{
+
+    @Autowired
+    private ProductDao productDao;
+
     @Autowired
     ProductRepository productRepository ;
 
@@ -35,15 +40,15 @@ public class ProductServiceImpl implements  IProductService{
         return productRepository.save(product);}
 
     @Override
-    public void deleteProduct(Long id) {productRepository.deleteById(id);}
+    public void deleteProduct(Integer id) {productRepository.deleteById(id);}
     @Override
     public Product updateProduct(Product product)  {return productRepository.save(product);}
     @Override
-    public Product retrieveProductById(Long id) {
+    public Product retrieveProductById(Integer id) {
         return productRepository.findById(id).orElse(null) ;
     }
     @Override
-    public void AddProductToCategory(Long idProduct, Long idCategory){
+    public void AddProductToCategory(Integer idProduct, Long idCategory){
         CategoryProduct C =categoryProductRepository.findById(idCategory).orElse(null);
         Product p = productRepository.findById(idProduct).orElse(null) ;
         p.setCategory(C);
@@ -58,7 +63,7 @@ public class ProductServiceImpl implements  IProductService{
     public Product findProductByType(String Type) {
         return productRepository.findProductByType(Type);
     }
-    public Product getProductDetailsById( Long idProduct){
+    public Product getProductDetailsById( Integer idProduct){
        return productRepository.findById(idProduct).get() ;
     }
 
@@ -84,7 +89,7 @@ public class ProductServiceImpl implements  IProductService{
 //    }
 
 //    public List<Product> getProductDetails(boolean isSingleProductCheckout, Integer productId) {
-//        if(isSingleProductCheckout && productId != 0) {
+//        if (isSingleProductCheckout && productId != 0) {
 //            // we are going to buy a single product
 //
 //            List<Product> list = new ArrayList<>();

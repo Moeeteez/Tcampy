@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Product} from "../Models/product.model";
+import {OrderDetails} from "../../frontOffice/Models/order-details.model";
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,9 @@ public addProduct( product :FormData){
 
   public getProductDetails(isSingleProductCheckout: any, productId: any){
     return this.httpClient.get<Product[] >("http://localhost:8009/getProductDetails/"+isSingleProductCheckout+"/"+productId)
+  }
+
+  public placeOrder(orderDetails: OrderDetails){
+    return this.httpClient.post("http://localhost:8009/placeOrder", orderDetails) ;
   }
 }
