@@ -22,8 +22,15 @@ export class StoreComponent implements OnInit {
   ngOnInit(): void {
     this.getAllProducts()
 ;  }
-  public getAllProducts() {
-    this.productService.getAllProducts(this.pageNumber)
+
+  searchByKeyword(searchbykeyword:any) {
+
+    this.pageNumber =0;
+    this.productDetails=[] ;
+    this.getAllProducts(searchbykeyword)
+  }
+  public getAllProducts(searchKey: string ="") {
+    this.productService.getAllProducts(this.pageNumber,searchKey)
       .pipe(
         map((x: Product [], i) =>x.map((product: Product) => this.imageProcessingService.createImages(product)))
       )
@@ -50,5 +57,6 @@ export class StoreComponent implements OnInit {
     this.pageNumber=this.pageNumber +1 ;
     this.getAllProducts();
   }
+
 
 }

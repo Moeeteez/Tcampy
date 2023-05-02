@@ -13,8 +13,8 @@ export class ProductService {
 public addProduct( product :FormData){
     return this.httpClient.post<Product>("http://localhost:8009/Product/add",product)
 }
-  public getAllProducts(pageNumber : any){
-    return this.httpClient.get<Product[]>("http://localhost:8009/Product/getAll?pageNumber="+pageNumber);
+  public getAllProducts(pageNumber : any , searchKey : string =""){
+    return this.httpClient.get<Product[]>("http://localhost:8009/Product/getAll?pageNumber="+pageNumber+"&searchKey="+searchKey);
   }
   public  deleteProduct(idProduct: number){
    return  this.httpClient.delete("http://localhost:8009/Product/delete/"+idProduct)
