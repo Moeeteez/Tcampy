@@ -12,6 +12,7 @@ import {AddProductComponent} from "./backOffice/add-product/add-product.componen
 import {ShowProductDetailsComponent} from "./backOffice/show-product-details/show-product-details.component";
 import {ProductResolveService} from "./backOffice/Services/product-resolve.service";
 import {BuyProductComponent} from "./frontOffice/buy-product/buy-product.component";
+import {BuyProductResolverService} from "./frontOffice/Services/buy-product-resolver.service";
 
 const routes: Routes = [
   {path:'admin', component:AllTemplateAdminComponent, children:[
@@ -27,7 +28,7 @@ const routes: Routes = [
       {path:'store', component: StoreComponent},
       {path:'itemDetails', component: ItemComponent, resolve: {product: ProductResolveService}},
       {path:'cardlist', component: CardlistComponent},
-      {path:'buyProduct', component: BuyProductComponent}]}];
+      {path:'buyProduct', component: BuyProductComponent ,  resolve: {productDetails: BuyProductResolverService}}]}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

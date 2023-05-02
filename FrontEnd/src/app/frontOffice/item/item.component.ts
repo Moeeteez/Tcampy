@@ -36,8 +36,10 @@ export class ItemComponent implements OnInit {
     this.selectedProductIndex = index;
   }
 
-  buyProduct() {
-    this.router.navigate(['/buyProduct']);
+  buyProduct(productId : any) {
+    this.router.navigate(['/buyProduct', {
+      isSingleProductCheckout: true, id: productId
+    }]);
   }
 
 }

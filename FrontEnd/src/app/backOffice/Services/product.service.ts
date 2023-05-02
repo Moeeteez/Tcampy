@@ -23,4 +23,8 @@ public addProduct( product :FormData){
   public  getProductDetailsById(idProduct : any){
     return  this.httpClient.get<Product>("http://localhost:8009/Product/get/"+idProduct)
   }
+
+  public getProductDetails(isSingleProductCheckout: any, productId: any){
+    return this.httpClient.get<Product[] >("http://localhost:8009/getProductDetails/"+isSingleProductCheckout+"/"+productId)
+  }
 }
