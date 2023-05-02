@@ -1,2 +1,0 @@
-# spring-ng-blog
-
