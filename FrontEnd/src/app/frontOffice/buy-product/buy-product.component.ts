@@ -5,13 +5,17 @@ import {OrderDetails} from "../Models/order-details.model";
 import {ProductService} from "../../backOffice/Services/product.service";
 import {NgForm} from "@angular/forms";
 
+declare var Razorpay: any;
+
+
+
 @Component({
   selector: 'app-buy-product',
   templateUrl: './buy-product.component.html',
   styleUrls: ['./buy-product.component.scss']
 })
 export class BuyProductComponent implements OnInit {
-
+  isSingleProductCheckout: string = '';
   productDetails: Product[] = [] ;
 
   orderDetails: OrderDetails = {
@@ -19,6 +23,7 @@ export class BuyProductComponent implements OnInit {
     fullAddress: '',
     contactNumber: '',
     alternateContactNumber: '',
+    transactionId: '',
     orderProductQuantityList: []
   }
 
@@ -86,5 +91,58 @@ export class BuyProductComponent implements OnInit {
 
     return grandTotal;
   }
+
+
+  createTransactionAndPlaceOrder(orderForm: NgForm) {
+    let amount = this.getCalculatedGrandTotal();
+    this.productService.createTransaction(amount).subscribe(
+      (response) => {
+        console.log(response);
+        this.openTransactioModal(response, orderForm);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+    openTransactioModal(response: any, orderForm: NgForm) {
+      var options = {
+        order_id: response.orderId,
+        key: response.key,
+        amount: response.amount,
+        currency: response.currency,
+        name: 'Tcampy',
+        description: 'Payment of online shopping',
+        image: 'https://cdn.pixabay.com/photo/2023/01/22/13/46/swans-7736415_640.jpg',
+        handler: (response: any) => {
+          if(response!= null && response.razorpay_payment_id != null) {
+            this.processResponse(response, orderForm);
+          } else {
+            alert("Payment failed..")
+          }
+
+        },
+        prefill : {
+          name:'Tcampy',
+          email: 'Tcampy@GMAIL.COM',
+          contact: '90909090'
+        },
+        notes: {
+          address: 'Online Shopping'
+        },
+        theme: {
+          color: '#F37254'
+        }
+      };
+
+      var razorPayObject = new Razorpay(options);
+      razorPayObject.open();
+    }
+
+    processResponse(resp: any, orderForm:NgForm) {
+      this.orderDetails.transactionId = resp.razorpay_payment_id;
+      this.placeOrder(orderForm);
+    }
+
 
 }

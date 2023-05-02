@@ -24,12 +24,12 @@ public class CartController {
     }
 
 
-//    @DeleteMapping({"/deleteCartItem/{cartId}"})
-//    public void deleteCartItem(@PathVariable(name = "cartId") Integer cartId) {
-//        cartService.deleteCartItem(cartId);
-//    }
-//
-//
+    @DeleteMapping({"/deleteCartItem/{cartId}"})
+    public void deleteCartItem(@PathVariable(name = "cartId") Integer cartId) {
+        cartService.deleteCartItem(cartId);
+    }
+
+
     @GetMapping({"/getCartDetails"})
     public List<Cart> getCartDetails() {
         return cartService.getCartDetails();

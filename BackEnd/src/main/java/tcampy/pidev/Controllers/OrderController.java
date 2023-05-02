@@ -165,8 +165,8 @@ public class OrderController {
 //    }
 //
 //
-//    @GetMapping({"/createTransaction/{amount}"})
-//    public TransactionDetails createTransaction(@PathVariable(name = "amount") Double amount) {
-//        return orderDetailService.createTransaction(amount);
-//    }
+    @GetMapping({"/createTransaction/{amount}"})
+    public TransactionDetails createTransaction(@PathVariable(name = "amount") Double amount) {
+        return orderDetailService.createTransaction(amount);
+    }
 }

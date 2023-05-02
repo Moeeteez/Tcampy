@@ -35,16 +35,16 @@ public class CartService {
 
 
         User user = new User("moeeteez", "moetez", "hammadi", "moet1544");
-//        if(user.getUserFirstName() != null) {
-//            user = userRepository.findById(user.getUserFirstName()).get();
-//        }
+        if(user.getUserFirstName() != null) {
+            user = userRepository.findById(user.getUserFirstName()).get();
+        }
 
-//        List<Cart> cartList = cardRepository.findByUser(user);
-//        List<Cart> filteredList = cartList.stream().filter(x -> x.getProduct().getProductId() == productId).collect(Collectors.toList());
+        List<Cart> cartList = cardRepository.findByUser(user);
+        List<Cart> filteredList = cartList.stream().filter(x -> x.getProduct().getIdProduct() == productId).collect(Collectors.toList());
 
-//        if(filteredList.size() > 0) {
-//            return null;
-//        }
+        if(filteredList.size() > 0) {
+            return null;
+        }
 
         if(product != null && user != null) {
             Cart cart = new Cart(product, user);
