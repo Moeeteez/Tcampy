@@ -3,6 +3,8 @@ package tcampy.pidev.Controllers;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +33,10 @@ public class ProductController {
     ICategoryService iCategoryService;
 
     @GetMapping("/getAll")
-    List<Product> retriveAllProduct() {
-        return iProductService.retriveAllProduct();
+    List<Product> retriveAllProduct( @RequestParam(defaultValue = "0") int pageNumber) {
+
+        Pageable pageable = PageRequest.of(pageNumber,1);
+        return iProductService.retriveAllProduct(pageable);
     }
 
     @PostMapping(value = {"/add"}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
@@ -91,17 +95,13 @@ public class ProductController {
         return  iProductService.getProductDetailsById(idProduct) ;
     }
 
-//    @GetMapping({"/getProductDetails/{isSingleProductCheckout}/{productId}"})
-//    public List<Product> getProductDetails(@PathVariable(name = "isSingleProductCheckout" ) boolean isSingleProductCheckout,
-//                                           @PathVariable(name = "productId")  Integer productId) {
-//        return iProductService.getProductDetails(isSingleProductCheckout, productId);
-//    }
 
-//@GetMapping({"/getProductDetails/{isSingleProductCheckout}/{productId}"})
-//public List<Product> getProductDetails(@PathVariable(name = "isSingleProductCheckout" ) boolean isSingleProductCheckout,
-//                                       @PathVariable(name = "productId")  Integer productId) {
-//    return iProductService.getProductDetails(isSingleProductCheckout, productId);
-//}
+
+@GetMapping({"/getProductDetails/{isSingleProductCheckout}/{productId}"})
+public List<Product> getProductDetails(@PathVariable(name = "isSingleProductCheckout" ) boolean isSingleProductCheckout,
+                                       @PathVariable(name = "productId")  Integer productId) {
+    return iProductService.getProductDetails(isSingleProductCheckout, productId);
+}
 }
 
 

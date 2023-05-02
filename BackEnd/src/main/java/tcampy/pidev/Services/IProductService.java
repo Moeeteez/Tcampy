@@ -1,5 +1,6 @@
 package tcampy.pidev.Services;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.multipart.MultipartFile;
 import tcampy.pidev.Entity.Product;
@@ -7,7 +8,7 @@ import tcampy.pidev.Entity.Product;
 import java.util.List;
 
 public interface IProductService{
-    List<Product> retriveAllProduct();
+  //  List<Product> retriveAllProduct();
     Product AddProduct(Product product);
     void deleteProduct(Integer id);
     Product updateProduct(Product product);
@@ -16,5 +17,6 @@ public interface IProductService{
     Product findByName(String Name) ;
     Product findProductByType (String Type) ;
      Product getProductDetailsById( Integer idProduct) ;
-   //List<Product> getProductDetails(boolean isSingleProductCheckout, Integer productId);
+   List<Product> getProductDetails(boolean isSingleProductCheckout, Integer productId);
+   public List<Product> retriveAllProduct(Pageable pageable);
 }

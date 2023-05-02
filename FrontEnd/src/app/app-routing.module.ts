@@ -13,6 +13,7 @@ import {ShowProductDetailsComponent} from "./backOffice/show-product-details/sho
 import {ProductResolveService} from "./backOffice/Services/product-resolve.service";
 import {BuyProductComponent} from "./frontOffice/buy-product/buy-product.component";
 import {BuyProductResolverService} from "./frontOffice/Services/buy-product-resolver.service";
+import {OrderConfirmationComponent} from "./frontOffice/order-confirmation/order-confirmation.component";
 
 const routes: Routes = [
   {path:'admin', component:AllTemplateAdminComponent, children:[
@@ -28,7 +29,8 @@ const routes: Routes = [
       {path:'store', component: StoreComponent},
       {path:'itemDetails', component: ItemComponent, resolve: {product: ProductResolveService}},
       {path:'cardlist', component: CardlistComponent},
-      {path:'buyProduct', component: BuyProductComponent ,  resolve: {productDetails: BuyProductResolverService}}]
+      {path:'buyProduct', component: BuyProductComponent ,  resolve: {productDetails: BuyProductResolverService}},
+      {path:'orderConfirm', component: OrderConfirmationComponent}]
 
   }];
 

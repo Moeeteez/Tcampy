@@ -1,6 +1,7 @@
 package tcampy.pidev.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,39 +21,49 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ProductServiceImpl implements  IProductService{
+public class ProductServiceImpl implements  IProductService {
 
     @Autowired
     private ProductDao productDao;
 
     @Autowired
-    ProductRepository productRepository ;
+    ProductRepository productRepository;
 
     @Autowired
-    CategoryProductRepository categoryProductRepository ;
-    @Override
-    public List<Product> retriveAllProduct() {
-        return productRepository.findAll();
-    }
+    CategoryProductRepository categoryProductRepository;
+
+//    @Override
+//    public List<Product> retriveAllProduct() {
+//        return productRepository.findAll();
+//    }
 
     @Override
     public Product AddProduct(Product product) {
-        return productRepository.save(product);}
+        return productRepository.save(product);
+    }
 
     @Override
-    public void deleteProduct(Integer id) {productRepository.deleteById(id);}
+    public void deleteProduct(Integer id) {
+        productRepository.deleteById(id);
+    }
+
     @Override
-    public Product updateProduct(Product product)  {return productRepository.save(product);}
+    public Product updateProduct(Product product) {
+        return productRepository.save(product);
+    }
+
     @Override
     public Product retrieveProductById(Integer id) {
-        return productRepository.findById(id).orElse(null) ;
+        return productRepository.findById(id).orElse(null);
     }
+
     @Override
-    public void AddProductToCategory(Integer idProduct, Long idCategory){
-        CategoryProduct C =categoryProductRepository.findById(idCategory).orElse(null);
-        Product p = productRepository.findById(idProduct).orElse(null) ;
+    public void AddProductToCategory(Integer idProduct, Long idCategory) {
+        CategoryProduct C = categoryProductRepository.findById(idCategory).orElse(null);
+        Product p = productRepository.findById(idProduct).orElse(null);
         p.setCategory(C);
-        productRepository.save(p);}
+        productRepository.save(p);
+    }
 
     @Override
     public Product findByName(String Name) {
@@ -63,8 +74,9 @@ public class ProductServiceImpl implements  IProductService{
     public Product findProductByType(String Type) {
         return productRepository.findProductByType(Type);
     }
-    public Product getProductDetailsById( Integer idProduct){
-       return productRepository.findById(idProduct).get() ;
+
+    public Product getProductDetailsById(Integer idProduct) {
+        return productRepository.findById(idProduct).get();
     }
 
 
@@ -72,7 +84,6 @@ public class ProductServiceImpl implements  IProductService{
 //    Product product =productRepository.findBySku(sku);
 //    ProductCategory productCategory =productCategoryRepository.findById(idProduct).orElse(null);
 //   productCategory.getProducts().add(product) ;}
-
 
 
 //    public void uploadImage(Long productId, MultipartFile file) {
@@ -88,21 +99,30 @@ public class ProductServiceImpl implements  IProductService{
 //
 //    }
 
-//    public List<Product> getProductDetails(boolean isSingleProductCheckout, Integer productId) {
-//        if (isSingleProductCheckout && productId != 0) {
-//            // we are going to buy a single product
-//
-//            List<Product> list = new ArrayList<>();
-//            Product product = productDao.findById(productId).get();
-//            list.add(product);
-//            return list;
-//        } else {
-//            // we are going to checkout entire cart
+    public List<Product> getProductDetails(boolean isSingleProductCheckout, Integer productId) {
+        if (isSingleProductCheckout && productId != 0) {
+            // we are going to buy a single product
+
+            List<Product> list = new ArrayList<>();
+            Product product = productDao.findById(productId).get();
+            list.add(product);
+            return list;
+        } else {
+            // we are going to checkout entire cart
 //            String username = JwtRequestFilter.CURRENT_USER;
 //            User user = userDao.findById(username).get();
 //            List<Cart> carts = cartDao.findByUser(user);
 //
 //            return carts.stream().map(x -> x.getProduct()).collect(Collectors.toList());
-//        }
+        }
 
+        return new ArrayList<>();
+    }
+
+    @Override
+    public List<Product> retriveAllProduct(Pageable pageable) {
+        return  productRepository.findAll(pageable).getContent();
+
+    }
 }
+
