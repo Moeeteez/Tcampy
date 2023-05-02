@@ -21,17 +21,17 @@ export class CartComponent implements OnInit {
     this.getCartDetails();
   }
 
-  // delete(cartId :any) {
-  //   console.log(cartId);
-  //   this.productService.deleteCartItem(cartId).subscribe(
-  //     (resp) => {
-  //       console.log(resp);
-  //       this.getCartDetails();
-  //     }, (err) => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
+  delete(cartId :any) {
+    console.log(cartId);
+    this.productService.deleteCartItem(cartId).subscribe(
+      (resp) => {
+        console.log(resp);
+        this.getCartDetails();
+      }, (err) => {
+        console.log(err);
+      }
+    );
+  }
 
   getCartDetails() {
     this.productService.getCartDetails().subscribe(

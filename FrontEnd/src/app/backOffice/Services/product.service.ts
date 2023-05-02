@@ -41,4 +41,9 @@ public addProduct( product :FormData){
   public getCartDetails() {
     return this.httpClient.get("http://localhost:8009/getCartDetails");
   }
+
+
+  public deleteCartItem(cartId : any) {
+    return this.httpClient.delete("http://localhost:8009/deleteCartItem/"+cartId);
+  }
 }
