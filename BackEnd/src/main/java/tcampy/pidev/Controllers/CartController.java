@@ -30,8 +30,8 @@ public class CartController {
 //    }
 //
 //
-//    @GetMapping({"/getCartDetails"})
-//    public List<Cart> getCartDetails() {
-//        return cartService.getCartDetails();
-//    }
+    @GetMapping({"/getCartDetails"})
+    public List<Cart> getCartDetails() {
+        return cartService.getCartDetails();
+    }
 }

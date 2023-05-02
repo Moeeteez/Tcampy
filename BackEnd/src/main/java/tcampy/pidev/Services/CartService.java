@@ -54,9 +54,9 @@ public class CartService {
         return null;
     }
 
-//    public List<Cart> getCartDetails() {
-//        String username = JwtRequestFilter.CURRENT_USER;
-//        User user = userDao.findById(username).get();
-//        return cartDao.findByUser(user);
-//    }
+    public List<Cart> getCartDetails() {
+
+        User user = new User("moeeteez", "moetez", "hammadi", "moet1544");
+        return cardRepository.findByUser(user);
+    }
 }
