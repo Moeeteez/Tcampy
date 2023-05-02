@@ -6,8 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import tcampy.pidev.Entity.Cart;
 import tcampy.pidev.Entity.CategoryProduct;
 import tcampy.pidev.Entity.Product;
+import tcampy.pidev.Entity.User;
+import tcampy.pidev.Repository.CardRepository;
 import tcampy.pidev.Repository.CategoryProductRepository;
 import tcampy.pidev.Repository.ProductRepository;
 import tcampy.pidev.dao.ProductDao;
@@ -31,6 +34,9 @@ public class ProductServiceImpl implements  IProductService {
 
     @Autowired
     CategoryProductRepository categoryProductRepository;
+
+    @Autowired
+    CardRepository cardRepository ;
 
 //    @Override
 //    public List<Product> retriveAllProduct() {
@@ -109,14 +115,13 @@ public class ProductServiceImpl implements  IProductService {
             return list;
         } else {
             // we are going to checkout entire cart
-//            String username = JwtRequestFilter.CURRENT_USER;
-//            User user = userDao.findById(username).get();
-//            List<Cart> carts = cartDao.findByUser(user);
-//
-//            return carts.stream().map(x -> x.getProduct()).collect(Collectors.toList());
+
+            User user = new User("moeeteez", "moetez", "hammadi", "moet1544");
+            List<Cart> carts = cardRepository.findByUser(user);
+
+            return carts.stream().map(x -> x.getProduct()).collect(Collectors.toList());
         }
 
-        return new ArrayList<>();
     }
 
     @Override
