@@ -33,6 +33,7 @@ import {BuyProductComponent} from "./frontOffice/buy-product/buy-product.compone
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { OrderConfirmationComponent } from './frontOffice/order-confirmation/order-confirmation.component';
+import { CartComponent } from './frontOffice/cart/cart.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { OrderConfirmationComponent } from './frontOffice/order-confirmation/ord
     ShowProductDetailsComponent,
     ShowImagesDialogComponent,
     BuyProductComponent,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import {ProductResolveService} from "./backOffice/Services/product-resolve.servi
 import {BuyProductComponent} from "./frontOffice/buy-product/buy-product.component";
 import {BuyProductResolverService} from "./frontOffice/Services/buy-product-resolver.service";
 import {OrderConfirmationComponent} from "./frontOffice/order-confirmation/order-confirmation.component";
+import {CartComponent} from "./frontOffice/cart/cart.component";
 
 const routes: Routes = [
   {path:'admin', component:AllTemplateAdminComponent, children:[
@@ -30,7 +31,9 @@ const routes: Routes = [
       {path:'itemDetails', component: ItemComponent, resolve: {product: ProductResolveService}},
       {path:'cardlist', component: CardlistComponent},
       {path:'buyProduct', component: BuyProductComponent ,  resolve: {productDetails: BuyProductResolverService}},
-      {path:'orderConfirm', component: OrderConfirmationComponent}]
+      {path:'orderConfirm', component: OrderConfirmationComponent},
+      {path:'cart', component: CartComponent }
+    ]
 
   }];
 

@@ -38,4 +38,7 @@ public addProduct( product :FormData){
     return this.httpClient.get("http://localhost:8009/addToCart/"+productId)
   }
 
+  public getCartDetails() {
+    return this.httpClient.get("http://localhost:8009/getCartDetails");
+  }
 }
