@@ -27,8 +27,9 @@ const routes: Routes = [
       {path:'user', component: BodyUserComponent},
       {path:'store', component: StoreComponent},
       {path:'itemDetails', component: ItemComponent, resolve: {product: ProductResolveService}},
-      {path:'cardlist', component: CardlistComponent},
-      {path:'buyProduct', component: BuyProductComponent ,  resolve: {productDetails: BuyProductResolverService}}]}];
+      {path:'cardlist', component: CardlistComponent}]
+},
+  {path:'buyProduct', component: BuyProductComponent ,  resolve: {productDetails: BuyProductResolverService}}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

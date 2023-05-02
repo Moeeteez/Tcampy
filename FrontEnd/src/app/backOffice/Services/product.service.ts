@@ -25,11 +25,13 @@ public addProduct( product :FormData){
     return  this.httpClient.get<Product>("http://localhost:8009/Product/get/"+idProduct)
   }
 
-  public getProductDetails(isSingleProductCheckout: any, productId: any){
-    return this.httpClient.get<Product[] >("http://localhost:8009/getProductDetails/"+isSingleProductCheckout+"/"+productId)
+
+  public getProductDetails(isSingleProductCheckout : any, productId:any) {
+    return this.httpClient.get<Product[]>("http://localhost:8009/Product/getProductDetails/"+isSingleProductCheckout+"/"+productId);
   }
 
   public placeOrder(orderDetails: OrderDetails){
     return this.httpClient.post("http://localhost:8009/placeOrder", orderDetails) ;
   }
+
 }
