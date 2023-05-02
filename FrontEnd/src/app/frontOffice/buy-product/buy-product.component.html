@@ -54,9 +54,44 @@
 
       </div>
       <div class="col-6">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus ex quos autem natus quo minus
-        recusandae doloribus cupiditate a officia, illo beatae quae odit accusantium velit nemo enim ipsum
-        dicta.
+        <table class="table">
+          <thead class="thead">
+          <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+          </thead>
+          <tbody class="tbody">
+          <tr *ngFor="let product of productDetails">
+            <td>{{product.name}}</td>
+            <td>{{product.priceSale}}</td>
+            <td>
+              <select
+                #quantity
+                class="form-select"
+                [ngModel]="getQuantityForProduct(product.idProduct)"
+                (change)="onQuantityChanged(quantity.value, product.idProduct)"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </td>
+            <td>
+              {{getCalculatedTotal(product.idProduct, product.priceSale)}}
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Total</td>
+            <td> {{getCalculatedGrandTotal()}} </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
