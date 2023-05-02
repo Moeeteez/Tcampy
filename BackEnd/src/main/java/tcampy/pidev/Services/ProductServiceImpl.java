@@ -66,8 +66,8 @@ public class ProductServiceImpl implements  IProductService {
     }
 
     @Override
-    public Product findByName(String Name) {
-        return productRepository.findProductByName(Name);
+    public List <Product> findByNameAndDescription(String key1 , String key2 , Pageable pageable) {
+        return productRepository.findProductByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(key1,key2,pageable);
     }
 
     @Override

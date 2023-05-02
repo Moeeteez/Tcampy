@@ -14,9 +14,10 @@ public interface IProductService{
     Product updateProduct(Product product);
     Product retrieveProductById(Integer id);
     public void AddProductToCategory(Integer idProduct , Long idCategory) ;
-    Product findByName(String Name) ;
+//    Product findByName(String Name) ;
     Product findProductByType (String Type) ;
      Product getProductDetailsById( Integer idProduct) ;
    List<Product> getProductDetails(boolean isSingleProductCheckout, Integer productId);
    public List<Product> retriveAllProduct(Pageable pageable);
+    public List <Product> findByNameAndDescription(String key1 , String key2 , Pageable pageable);
 }

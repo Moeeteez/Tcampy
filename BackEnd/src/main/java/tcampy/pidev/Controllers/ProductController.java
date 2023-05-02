@@ -33,10 +33,16 @@ public class ProductController {
     ICategoryService iCategoryService;
 
     @GetMapping("/getAll")
-    List<Product> retriveAllProduct( @RequestParam(defaultValue = "0") int pageNumber) {
+    List<Product> retriveAllProduct( @RequestParam(defaultValue = "0") int pageNumber,
+                                     @RequestParam(defaultValue ="") String searchKey) {
 
         Pageable pageable = PageRequest.of(pageNumber,1);
-        return iProductService.retriveAllProduct(pageable);
+        if(searchKey.equals("")) {
+            return iProductService.retriveAllProduct(pageable);
+        }else {
+            return (List<Product>) iProductService.findByNameAndDescription(searchKey,searchKey,pageable);
+
+        }
     }
 
     @PostMapping(value = {"/add"}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
@@ -80,10 +86,10 @@ public class ProductController {
     public void AddProductToCategory(@PathVariable Integer idProduct, @PathVariable long idCategory) {
         iProductService.AddProductToCategory(idProduct, idCategory);
     }
-    @GetMapping("/{name}")
-    Product retriveProduct(@PathVariable String name) {
-        return iProductService.findByName(name);
-    }
+//    @GetMapping("/{name}")
+//    Product retriveProduct(@PathVariable String name) {
+//        return iProductService.findByName(name);
+//    }
 
     @GetMapping("/type/{type}")
     Product retriveProductByType(@PathVariable String type) {
