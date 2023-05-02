@@ -12,6 +12,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent implements OnInit {
+  showLoadButton = false ;
+  pageNumber : number = 0 ;
   productDetails: Product [] = [] ;
   constructor(private productService: ProductService,
   private  imageProcessingService : ImageProcessingService,
@@ -21,14 +23,20 @@ export class StoreComponent implements OnInit {
     this.getAllProducts()
 ;  }
   public getAllProducts() {
-    this.productService.getAllProducts()
+    this.productService.getAllProducts(this.pageNumber)
       .pipe(
         map((x: Product [], i) =>x.map((product: Product) => this.imageProcessingService.createImages(product)))
       )
       .subscribe(
         (resp:Product [] )=> {
           console.log(resp);
-          this.productDetails=resp ;
+          if(resp.length ==1){
+            this.showLoadButton = true ;
+          }else {
+            this.showLoadButton = false ;
+          }
+          resp.forEach(p => this.productDetails.push(p))
+          //this.productDetails=resp ;
         },(error:HttpErrorResponse)=> {
           console.log(error)
         }
@@ -37,6 +45,10 @@ export class StoreComponent implements OnInit {
   showProductDetails(idProduct : any){
     this.router.navigate(['/itemDetails',{idProduct : idProduct}])
 
+  }
+  public loadMoreProduct() {
+    this.pageNumber=this.pageNumber +1 ;
+    this.getAllProducts();
   }
 
 }
