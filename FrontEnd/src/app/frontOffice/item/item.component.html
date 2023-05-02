@@ -39,11 +39,13 @@
           </div>
           <div class="product-count">
             <form action="#" class="display-flex">
-              <div class="qtyminus">-</div>
-              <input type="text" name="quantity" value="1" class="qty">
-              <div class="qtyplus">+</div>
+<!--              <div class="qtyminus">-</div>-->
+<!--              <input type="text" name="quantity" value="1" class="qty">-->
+<!--              <div class="qtyplus">+</div>-->
             </form>
-            <button  class="round-black-btn" (click)="buyProduct(product.idProduct)">Add to Cart</button>
+            <button  class="round-black-btn" (click)="buyProduct(product.idProduct)">Buy Now</button>
+            &nbsp;
+            <button  class="round-black-btn" (click)="addtoCart(product.idProduct)">Add to Card</button>
           </div>
         </div>
       </div>

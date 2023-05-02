@@ -34,4 +34,8 @@ public addProduct( product :FormData){
     return this.httpClient.post("http://localhost:8009/orders/placeOrder", orderDetails) ;
   }
 
+  public  addToCart (productId : any){
+    return this.httpClient.get("http://localhost:8009/addToCart/"+productId)
+  }
+
 }

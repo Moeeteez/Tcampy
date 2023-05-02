@@ -24,14 +24,23 @@ export class ItemComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
-              private productService: ProductService) {
+              private productService: ProductService,) {
   }
 
   ngOnInit(): void {
     this.product = this.activatedRoute.snapshot.data['product'];
     console.log(this.product)
   }
+  addtoCart(idProduct: any) {
+    this.productService.addToCart(idProduct).subscribe(
+      (response)=>{
+        console.log(response) ;
+      },(error)=> {
+        console.log(error)
+      }
+    )
 
+  }
   changeIndex(index: any) {
     this.selectedProductIndex = index;
   }
